@@ -1,0 +1,19 @@
+//
+//  EasyMap-Prefix.pch
+//  EasyMap
+//
+//  Created by hyyy on 2017/2/23.
+//  Copyright © 2017年 hyyy. All rights reserved.
+//
+
+#ifndef EasyMap_Prefix_pch
+#define EasyMap_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+/*****************Base Components*****************/
+#import "Masonry.h"
+
+#endif /* EasyMap_Prefix_pch */
