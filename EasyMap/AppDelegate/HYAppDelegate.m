@@ -7,6 +7,7 @@
 //
 
 #import "HYAppDelegate.h"
+#import "HYAppDelegate+BaiduMap.h"
 #import "HYHomeViewController.h"
 
 @implementation HYAppDelegate
@@ -18,8 +19,11 @@
     
     HYHomeViewController *homeVC = [[HYHomeViewController alloc] init];
     self.window.rootViewController = homeVC;
-    [self.window makeKeyAndVisible];
     
+    // 开启百度地图
+    [self startBaiduMapManager];
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

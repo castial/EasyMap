@@ -12,6 +12,7 @@
 		68321D991E5EB86C002A6F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68321D971E5EB86C002A6F3F /* LaunchScreen.storyboard */; };
 		68321DA31E5EB8E4002A6F3F /* HYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */; };
 		68321DA71E5EBA2E002A6F3F /* HYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68321DA61E5EBA2E002A6F3F /* HYHomeViewController.m */; };
+		6896862D1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896862C1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m */; };
 		AB8F33E23423D554A8C336D6 /* libPods-EasyMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D214ED617C83E2D915A4BA97 /* libPods-EasyMap.a */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,8 @@
 		68321DA51E5EBA2E002A6F3F /* HYHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYHomeViewController.h; path = Controller/HYHomeViewController.h; sourceTree = "<group>"; };
 		68321DA61E5EBA2E002A6F3F /* HYHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYHomeViewController.m; path = Controller/HYHomeViewController.m; sourceTree = "<group>"; };
 		68662C4C1E5ED3AD0067A662 /* EasyMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyMap-Prefix.pch"; sourceTree = "<group>"; };
+		6896862B1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HYAppDelegate+BaiduMap.h"; path = "AppDelegate/HYAppDelegate+BaiduMap.h"; sourceTree = "<group>"; };
+		6896862C1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HYAppDelegate+BaiduMap.m"; path = "AppDelegate/HYAppDelegate+BaiduMap.m"; sourceTree = "<group>"; };
 		C7798A2983E553E5E5095F1E /* Pods-EasyMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyMap/Pods-EasyMap.debug.xcconfig"; sourceTree = "<group>"; };
 		D214ED617C83E2D915A4BA97 /* libPods-EasyMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyMap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,6 +108,8 @@
 			children = (
 				68321DA11E5EB8E4002A6F3F /* HYAppDelegate.h */,
 				68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */,
+				6896862B1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.h */,
+				6896862C1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 			files = (
 				68321D8B1E5EB86C002A6F3F /* main.m in Sources */,
 				68321DA71E5EBA2E002A6F3F /* HYHomeViewController.m in Sources */,
+				6896862D1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m in Sources */,
 				68321DA31E5EB8E4002A6F3F /* HYAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
