@@ -7,13 +7,15 @@
 //
 
 #import "HYHomeViewController.h"
-#import <BaiduMapAPI_Map/BMKMapView.h>
+#import "HYHomeView.h"
+#import "HYNavSearchBar.h"
 
 @interface HYHomeViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate>
 
-@property (strong, nonatomic) BMKMapView *mapView;
+@property (strong, nonatomic) HYHomeView *homeView;
+@property (strong, nonatomic) HYNavSearchBar *searchView;   // 导航栏搜索
+
 @property (strong, nonatomic) BMKLocationService *locationService;  // 定位服务
-@property (strong, nonatomic) BMKPointAnnotation *annotation;   // 标注
 
 @end
 
@@ -23,20 +25,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self.view addSubview:self.mapView];
+    self.title = @"首页";
+//    self.navigationItem.titleView = self.searchView;
+    [self.view addSubview:self.homeView];
     
     // 启动定位服务
     [self.locationService startUserLocationService];
-    // 添加标注
-    [self.mapView addAnnotation:self.annotation];
+    NSLog(@"背景颜色: %@", self.view.backgroundColor);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.mapView.delegate = self;
+//    self.mapView.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -47,7 +48,7 @@
     [super viewDidDisappear:animated];
     
     // 不用的时候置为nil，否则影响内存的释放
-    self.mapView.delegate = nil;
+//    self.mapView.delegate = nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -55,23 +56,13 @@
 }
 
 #pragma mark - BMKMapViewDelegate
-- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation {
-    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
-        BMKPinAnnotationView *annotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotation"];
-        annotationView.pinColor = BMKPinAnnotationColorRed;
-        annotationView.animatesDrop = YES;
-        annotationView.draggable = YES;
-        return annotationView;
-    }
-    return nil;
-}
 
 #pragma mark - BMKLocationServiceDelegate
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation {
     NSLog(@"heading is %@", userLocation.heading);
     
     // 更新定位信息
-    [self.mapView updateLocationData:userLocation];
+//    [self.mapView updateLocationData:userLocation];
 }
 
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
@@ -81,24 +72,31 @@
     BMKCoordinateRegion region = BMKCoordinateRegionMake(userLocation.location.coordinate, BMKCoordinateSpanMake(zoomLevel, zoomLevel));
     
     // 更新定位信息
-    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+//    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     
     CLLocationCoordinate2D coor;
     coor.latitude = userLocation.location.coordinate.latitude;
     coor.longitude = userLocation.location.coordinate.longitude;
-    self.annotation.coordinate = coor;
+//    self.annotation.coordinate = coor;
 }
 
 #pragma mark - Events
 #pragma mark - Public Methods
 #pragma mark - Private Methods
 #pragma mark - setter and getter
-- (BMKMapView *)mapView {
-    if (!_mapView) {
-        _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        _mapView.showsUserLocation = YES;
+- (HYHomeView *)homeView {
+    if (!_homeView) {
+        _homeView = [[HYHomeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     }
-    return _mapView;
+    return _homeView;
+}
+
+- (HYNavSearchBar *)searchView {
+    if (!_searchView) {
+        _searchView = [[HYNavSearchBar alloc] initWithFrame:CGRectMake(0, 0, 150, 30)];
+        _searchView.searchPlaceHolder = @"搜索地点、饭店、公园或者酒店";
+    }
+    return _searchView;
 }
 
 - (BMKLocationService *)locationService {
@@ -107,15 +105,6 @@
         _locationService.delegate = self;
     }
     return _locationService;
-}
-
-- (BMKPointAnnotation *)annotation {
-    if (!_annotation) {
-        _annotation = [[BMKPointAnnotation alloc] init];
-        _annotation.title = @"我的位置";
-        _annotation.subtitle = @"我的位置介绍";
-    }
-    return _annotation;
 }
 
 @end
