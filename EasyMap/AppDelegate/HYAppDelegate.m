@@ -8,7 +8,7 @@
 
 #import "HYAppDelegate.h"
 #import "HYAppDelegate+BaiduMap.h"
-#import "HYNavigationController.h"
+#import "HYHomeViewController.h"
 
 @implementation HYAppDelegate
 
@@ -17,8 +17,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    HYNavigationController *navVC = [[HYNavigationController alloc] init];
-    self.window.rootViewController = navVC;
+    HYHomeViewController *homeVC = [[HYHomeViewController alloc] init];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:homeVC];
     
     // 开启百度地图
     [self startBaiduMapManager];

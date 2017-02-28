@@ -20,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self addChildViewController:self.homeVC];
 }
 
 - (void)didReceiveMemoryWarning {

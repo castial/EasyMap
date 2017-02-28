@@ -10,7 +10,7 @@
 #import "HYHomeView.h"
 #import "HYNavSearchBar.h"
 
-@interface HYHomeViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate>
+@interface HYHomeViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate, HYNavSearchBarDelegate>
 
 @property (strong, nonatomic) HYHomeView *homeView;
 @property (strong, nonatomic) HYNavSearchBar *searchView;   // 导航栏搜索
@@ -25,8 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"首页";
-//    self.navigationItem.titleView = self.searchView;
+//    self.title = @"首页";
+    self.navigationItem.titleView = self.searchView;
     [self.view addSubview:self.homeView];
     
     // 启动定位服务
@@ -80,6 +80,11 @@
 //    self.annotation.coordinate = coor;
 }
 
+#pragma mark - HYNavSearchBarDelegate
+- (void)clickedSearchBarHandler {
+    NSLog(@"您点击了搜索框");
+}
+
 #pragma mark - Events
 #pragma mark - Public Methods
 #pragma mark - Private Methods
@@ -93,8 +98,9 @@
 
 - (HYNavSearchBar *)searchView {
     if (!_searchView) {
-        _searchView = [[HYNavSearchBar alloc] initWithFrame:CGRectMake(0, 0, 150, 30)];
+        _searchView = [[HYNavSearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
         _searchView.searchPlaceHolder = @"搜索地点、饭店、公园或者酒店";
+        _searchView.delegate = self;
     }
     return _searchView;
 }

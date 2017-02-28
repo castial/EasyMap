@@ -13,8 +13,6 @@
 
 @property (strong, nonatomic) UIView *operateView;
 
-@property (strong, nonatomic) HYNavSearchBar *searchView;
-
 @end
 
 @implementation HYHomeView
@@ -31,7 +29,6 @@
 - (void)initUI {
     [self addSubview:self.mapView];
     [self addSubview:self.operateView];
-    [self.operateView addSubview:self.searchView];
 }
 
 - (void)initLayout {
@@ -41,11 +38,6 @@
     [self.operateView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self);
         make.height.mas_equalTo(@100);
-    }];
-    [self.searchView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.operateView.mas_left).offset(10);
-        make.top.equalTo(self.operateView.mas_top).offset(5);
-        make.right.equalTo(self.operateView.mas_right).offset(-10);
     }];
 }
 
@@ -63,14 +55,6 @@
         _operateView.backgroundColor = [UIColor whiteColor];
     }
     return _operateView;
-}
-
-- (HYNavSearchBar *)searchView {
-    if (!_searchView) {
-        _searchView = [[HYNavSearchBar alloc] init];
-        _searchView.searchPlaceHolder = @"ssousuo";
-    }
-    return _searchView;
 }
 
 @end
