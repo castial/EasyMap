@@ -10,12 +10,13 @@
 #import "HYHomeView.h"
 #import "HYNavSearchBar.h"
 
-@interface HYHomeViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate, HYNavSearchBarDelegate>
+@interface HYHomeViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate, HYNavSearchBarDelegate, HYHomeOperateDelegate>
 
 @property (strong, nonatomic) HYHomeView *homeView;
 @property (strong, nonatomic) HYNavSearchBar *searchView;   // 导航栏搜索
 
 @property (strong, nonatomic) BMKLocationService *locationService;  // 定位服务
+@property (strong, nonatomic) BMKGeoCodeSearch *geoSearch;  // geo搜索服务
 
 @end
 
@@ -25,19 +26,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.title = @"首页";
     self.navigationItem.titleView = self.searchView;
     [self.view addSubview:self.homeView];
     
     // 启动定位服务
     [self.locationService startUserLocationService];
-    NSLog(@"背景颜色: %@", self.view.backgroundColor);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    self.mapView.delegate = self;
+    self.homeView.mapView.delegate = self;
+    self.locationService.delegate = self;
+    self.geoSearch.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -48,7 +49,9 @@
     [super viewDidDisappear:animated];
     
     // 不用的时候置为nil，否则影响内存的释放
-//    self.mapView.delegate = nil;
+    self.homeView.mapView.delegate = nil;
+    self.locationService.delegate = nil;
+    self.geoSearch.delegate = nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -58,26 +61,34 @@
 #pragma mark - BMKMapViewDelegate
 
 #pragma mark - BMKLocationServiceDelegate
+/**
+ *用户方向更新后，会调用此函数
+ *@param userLocation 新的用户位置
+ */
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation {
-    NSLog(@"heading is %@", userLocation.heading);
-    
-    // 更新定位信息
-//    [self.mapView updateLocationData:userLocation];
+    [self.homeView.mapView updateLocationData:userLocation];
 }
 
+/**
+ *用户位置更新后，会调用此函数
+ *@param userLocation 新的用户位置
+ */
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
-    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    self.homeView.mapView.centerCoordinate = userLocation.location.coordinate;
     
-    float zoomLevel = 0.02;
-    BMKCoordinateRegion region = BMKCoordinateRegionMake(userLocation.location.coordinate, BMKCoordinateSpanMake(zoomLevel, zoomLevel));
-    
-    // 更新定位信息
-//    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-    
-    CLLocationCoordinate2D coor;
-    coor.latitude = userLocation.location.coordinate.latitude;
-    coor.longitude = userLocation.location.coordinate.longitude;
-//    self.annotation.coordinate = coor;
+    [self.homeView.mapView updateLocationData:userLocation];
+}
+
+#pragma mark - BMKGeoCodeSearchDelegate
+- (void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error {
+    if (error == 0) {
+        BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc] init];
+        annotation.coordinate = result.location;
+        annotation.title = result.address;
+        NSString *address = result.address;
+        
+        NSLog(@"当前位置地址: %@", result.address);
+    }
 }
 
 #pragma mark - HYNavSearchBarDelegate
@@ -85,13 +96,53 @@
     NSLog(@"您点击了搜索框");
 }
 
+#pragma mark - HYHomeOperateDelegate
+- (void)clickedHomeOperateBtnHandler:(HYOperateButton)buttonType {
+    NSLog(@"按钮功能类型；%ld", buttonType);
+    switch (buttonType) {
+        case HYOperateButtonSend:{
+            
+            NSLog(@"定位的经度：%f, 纬度：%f", self.locationService.userLocation.location.coordinate.longitude, self.locationService.userLocation.location.coordinate.latitude);
+            
+            // 反编码经纬度，获取详细地址
+            [self reverseGeoSearchWithLongitude:self.locationService.userLocation.location.coordinate.longitude latitude:self.locationService.userLocation.location.coordinate.latitude];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark - Events
 #pragma mark - Public Methods
 #pragma mark - Private Methods
+/**
+ 根据经纬度反geo检索出位置地址
+
+ @param longitude 经度
+ @param latitude 纬度
+ */
+- (void)reverseGeoSearchWithLongitude:(float)longitude latitude:(float)latitude {
+    CLLocationCoordinate2D pt = (CLLocationCoordinate2D){0, 0};
+    if (longitude != 0 && latitude != 0) {
+        pt = (CLLocationCoordinate2D){latitude, self.locationService.userLocation.location.coordinate.longitude};
+    }
+    BMKReverseGeoCodeOption *reverseOption = [[BMKReverseGeoCodeOption alloc] init];
+    reverseOption.reverseGeoPoint = pt;
+    BOOL flag = [self.geoSearch reverseGeoCode:reverseOption];
+    if (flag) {
+        NSLog(@"geo检索成功");
+    }else {
+        NSLog(@"geo检索失败");
+    }
+}
+
 #pragma mark - setter and getter
 - (HYHomeView *)homeView {
     if (!_homeView) {
         _homeView = [[HYHomeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _homeView.delegate = self;
     }
     return _homeView;
 }
@@ -108,9 +159,15 @@
 - (BMKLocationService *)locationService {
     if (!_locationService) {
         _locationService = [[BMKLocationService alloc] init];
-        _locationService.delegate = self;
     }
     return _locationService;
+}
+
+- (BMKGeoCodeSearch *)geoSearch {
+    if (!_geoSearch) {
+        _geoSearch = [[BMKGeoCodeSearch alloc] init];
+    }
+    return _geoSearch;
 }
 
 @end
