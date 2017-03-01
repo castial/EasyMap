@@ -10,14 +10,16 @@
 
 // 操作视图中按钮功能类型
 typedef enum : NSUInteger {
-    HYOperateButtonNone = 10000,    // 默认不做任何操作
-    HYOperateButtonSend,    // 发送功能按钮
-} HYOperateButton;
+    HYOperateItemNone = 10000,    // 默认不做任何操作
+    HYOperateItemLocate,    // 定位功能按钮
+    HYOperateItemNavigate,  // 导航功能按钮
+    HYOperateItemMe,        // 我的页面按钮
+} HYOperateItem;
 
 @protocol HYHomeOperateDelegate <NSObject>
 
 @optional
-- (void)clickedHomeOperateBtnHandler:(HYOperateButton)buttonType;
+- (void)clickedHomeOperateBtnHandler:(HYOperateItem)itemType;
 
 @end
 @interface HYHomeView : UIView

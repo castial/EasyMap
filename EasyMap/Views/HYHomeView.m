@@ -11,9 +11,11 @@
 
 @interface HYHomeView()
 
-@property (strong, nonatomic) UIView *operateView;
-
-@property (strong, nonatomic) UIButton *sendLocationBtn;
+// 底部工具栏
+@property (strong, nonatomic) UIToolbar *toolBar;
+@property (strong, nonatomic) UIBarButtonItem *locateItem;  // 定位按钮
+@property (strong, nonatomic) UIBarButtonItem *navigateItem;    // 导航按钮
+@property (strong, nonatomic) UIBarButtonItem *meItem;  // 我的按钮
 
 @end
 
@@ -30,29 +32,23 @@
 
 - (void)initUI {
     [self addSubview:self.mapView];
-    [self addSubview:self.operateView];
-    [self.operateView addSubview:self.sendLocationBtn];
+    [self addSubview:self.toolBar];
 }
 
 - (void)initLayout {
     [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.bottom.equalTo(self);
     }];
-    [self.operateView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self);
-        make.height.mas_equalTo(@100);
-    }];
-    [self.sendLocationBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.operateView.mas_centerX);
-        make.centerY.equalTo(self.operateView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(80, 80));
+        make.height.mas_equalTo(@44);
     }];
 }
 
 #pragma mark - Events
 - (void)clickedBtnHandler:(id)sender {
     UIButton *btn = (UIButton *)sender;
-    HYOperateButton type = btn.tag;
+    HYOperateItem type = btn.tag;
     if ([self.delegate respondsToSelector:@selector(clickedHomeOperateBtnHandler:)]) {
         [self.delegate clickedHomeOperateBtnHandler:type];
     }
@@ -76,22 +72,39 @@
     return _mapView;
 }
 
-- (UIView *)operateView {
-    if (!_operateView) {
-        _operateView = [[UIView alloc] init];
-        _operateView.backgroundColor = [UIColor whiteColor];
+- (UIToolbar *)toolBar {
+    if (!_toolBar) {
+        _toolBar = [[UIToolbar alloc] init];
+        _toolBar.backgroundColor = [UIColor lightGrayColor];
+        // 添加item
+        UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [_toolBar setItems:@[self.locateItem, flexibleItem, self.navigateItem, flexibleItem, self.meItem] animated:YES];
     }
-    return _operateView;
+    return _toolBar;
 }
 
-- (UIButton *)sendLocationBtn {
-    if (!_sendLocationBtn) {
-        _sendLocationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _sendLocationBtn.backgroundColor = [UIColor greenColor];
-        _sendLocationBtn.tag = HYOperateButtonSend;
-        [_sendLocationBtn addTarget:self action:@selector(clickedBtnHandler:) forControlEvents:UIControlEventTouchUpInside];
+- (UIBarButtonItem *)locateItem {
+    if (!_locateItem) {
+        _locateItem = [[UIBarButtonItem alloc] initWithTitle:@"第一" style:UIBarButtonItemStylePlain target:self action:@selector(clickedBtnHandler:)];
+        _locateItem.tag = HYOperateItemLocate;
     }
-    return _sendLocationBtn;
+    return _locateItem;
+}
+
+- (UIBarButtonItem *)navigateItem {
+    if (!_navigateItem) {
+        _navigateItem = [[UIBarButtonItem alloc] initWithTitle:@"第二" style:UIBarButtonItemStylePlain target:self action:@selector(clickedBtnHandler:)];
+        _navigateItem.tag = HYOperateItemNavigate;
+    }
+    return _navigateItem;
+}
+
+- (UIBarButtonItem *)meItem {
+    if (!_meItem) {
+        _meItem = [[UIBarButtonItem alloc] initWithTitle:@"第三" style:UIBarButtonItemStylePlain target:self action:@selector(clickedBtnHandler:)];
+        _meItem.tag = HYOperateItemMe;
+    }
+    return _meItem;
 }
 
 @end

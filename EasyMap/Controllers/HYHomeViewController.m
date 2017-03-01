@@ -9,6 +9,8 @@
 #import "HYHomeViewController.h"
 #import "HYHomeView.h"
 #import "HYNavSearchBar.h"
+#import "HYLocateChooseController.h"
+#import "UIViewController+Present.h"
 
 @interface HYHomeViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate, HYNavSearchBarDelegate, HYHomeOperateDelegate>
 
@@ -85,9 +87,18 @@
         BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc] init];
         annotation.coordinate = result.location;
         annotation.title = result.address;
-        NSString *address = result.address;
+        NSString *address = [NSString stringWithFormat:@"%@(%@)", result.address, result.sematicDescription];
         
-        NSLog(@"当前位置地址: %@", result.address);
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:address preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:nil];
+//        [alertController addAction:cancelAction];
+//        [self presentViewController:alertController animated:YES completion:nil];
+        
+        // 测试
+        HYLocateChooseController *locateChoostVC = [[HYLocateChooseController alloc] init];
+        locateChoostVC.addressDescription = address;
+        locateChoostVC.poiList = result.poiList;
+        [self hy_presentViewController:locateChoostVC animated:YES completion:nil];
     }
 }
 
@@ -97,10 +108,10 @@
 }
 
 #pragma mark - HYHomeOperateDelegate
-- (void)clickedHomeOperateBtnHandler:(HYOperateButton)buttonType {
-    NSLog(@"按钮功能类型；%ld", buttonType);
-    switch (buttonType) {
-        case HYOperateButtonSend:{
+- (void)clickedHomeOperateBtnHandler:(HYOperateItem)itemType {
+    NSLog(@"按钮功能类型；%ld", itemType);
+    switch (itemType) {
+        case HYOperateItemLocate:{
             
             NSLog(@"定位的经度：%f, 纬度：%f", self.locationService.userLocation.location.coordinate.longitude, self.locationService.userLocation.location.coordinate.latitude);
             
