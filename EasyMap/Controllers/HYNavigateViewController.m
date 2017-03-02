@@ -20,12 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftButtonHandler)];
+    self.title = @"路线";
     [self.view addSubview:self.segmentControl];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Events
+- (void)clickedLeftButtonHandler {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - setter and getter
