@@ -1,5 +1,5 @@
 //
-//  HYLocateChooseController.h
+//  HYLocateViewController.h
 //  EasyMap
 //
 //  Created by hyyy on 2017/3/1.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HYLocateChooseController : UIViewController
+@interface HYLocateViewController : UIViewController
 
-// 当前位置描述
-@property (nonatomic, strong) NSString *addressDescription;
+// 当前位置
+@property (nonatomic, strong) BMKReverseGeoCodeResult *currentLocation;
 // 地址周边POI信息，成员类型为BMKPoiInfo
 @property (nonatomic, strong) NSArray<BMKPoiInfo *> *poiList;
 

@@ -8,4 +8,5 @@ platform :ios, '8.0'
 target 'EasyMap' do
   pod 'Masonry'
   pod 'BaiduMapKit'
+  pod 'MBProgressHUD'
 end

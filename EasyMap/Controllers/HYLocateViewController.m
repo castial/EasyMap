@@ -1,29 +1,32 @@
 //
-//  HYLocateChooseController.m
+//  HYLocateViewController.m
 //  EasyMap
 //
 //  Created by hyyy on 2017/3/1.
 //  Copyright © 2017年 hyyy. All rights reserved.
 //
 
-#import "HYLocateChooseController.h"
+#import "HYLocateViewController.h"
 #import <MessageUI/MessageUI.h>
 
-@interface HYLocateChooseController ()<UITableViewDelegate, UITableViewDataSource, MFMessageComposeViewControllerDelegate>
+@interface HYLocateViewController ()<UITableViewDelegate, UITableViewDataSource, MFMessageComposeViewControllerDelegate, BMKShareURLSearchDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSIndexPath *selectIndexPath; // 选中的indexPath
 
+// 短串分享
+@property (strong, nonatomic) BMKShareURLSearch *shareSearch;
+
 @end
 
-@implementation HYLocateChooseController
+@implementation HYLocateViewController
 
 #pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"选择位置";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(clickedBackBtnHandler)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickedBackBtnHandler)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(clickedSendBtnHandler)];
     
     [self.view addSubview:self.tableView];
@@ -74,8 +77,8 @@
     
     // 首个显示详细位置
     if (indexPath.section == 0 && indexPath.row == 0) {
-        cell.textLabel.text = @"当前位置";
-        cell.detailTextLabel.text = self.addressDescription;
+        cell.textLabel.text = self.currentLocation.address;
+        cell.detailTextLabel.text = self.currentLocation.sematicDescription;
     }
     // 勾选对号
     if ([self.selectIndexPath isEqual:indexPath]) {
@@ -101,6 +104,36 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - BMKShareURLSearchDelegate
+- (void)onGetPoiDetailShareURLResult:(BMKShareURLSearch *)searcher result:(BMKShareURLResult *)result errorCode:(BMKSearchErrorCode)error {
+    
+    [self.hy_hub hideAnimated:YES];
+    if (error == BMK_SEARCH_NO_ERROR) {
+        NSString *url = result.url;
+        
+        // 获取短信内容，发送短信
+        BMKPoiInfo *poiInfo = [self.poiList objectAtIndex:self.selectIndexPath.row];
+        NSString *messageBody = [NSString stringWithFormat:@"%@(%@)，点击%@查看", poiInfo.address, poiInfo.name, url];
+        [self sendMessage:messageBody];
+    }else {
+        NSLog(@"抱歉，未找到结果");
+    }
+}
+
+- (void)onGetLocationShareURLResult:(BMKShareURLSearch *)searcher result:(BMKShareURLResult *)result errorCode:(BMKSearchErrorCode)error {
+    
+    [self.hy_hub hideAnimated:YES];
+    if (error == BMK_SEARCH_NO_ERROR) {
+        NSString *url = result.url;
+        
+        // 获取短信内容，发送短信
+        NSString *messageBody = [NSString stringWithFormat:@"%@(%@)，点击查看%@", self.currentLocation.address, self.currentLocation.sematicDescription, url];
+        [self sendMessage:messageBody];
+    }else {
+        NSLog(@"抱歉，未找到结果");
+    }
+}
+
 #pragma mark - MFMessageComposeViewControllerDelegate
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
     // 关闭短信界面
@@ -109,6 +142,7 @@
         NSLog(@"短信取消发送");
     }else if (result == MessageComposeResultSent) {
         NSLog(@"短信发送成功");
+        [self dismissViewControllerAnimated:YES completion:nil];
     }else {
         NSLog(@"短信发送失败");
     }
@@ -120,22 +154,45 @@
 }
 
 - (void)clickedSendBtnHandler {
-    // 获取短信内容
-    NSString *messageBody;
+    
+    self.hy_hub.label.text = @"正在获取分享短串，请稍后...";
+    [self.hy_hub showAnimated:YES];
+    // 获取分享短串
     if (self.selectIndexPath.section == 0) {
-        messageBody = self.addressDescription;
-    }else {
-        BMKPoiInfo *poiInfo = [self.poiList objectAtIndex:self.selectIndexPath.row];
-        messageBody = [NSString stringWithFormat:@"%@(%@)", poiInfo.address, poiInfo.name];
+        BMKLocationShareURLOption *locationShare = [[BMKLocationShareURLOption alloc] init];
+        locationShare.snippet = self.currentLocation.address;
+        locationShare.name = self.currentLocation.sematicDescription;
+        locationShare.location = self.currentLocation.location;
+        BOOL flag = [self.shareSearch requestLocationShareURL:locationShare];
+        if (!flag) {
+            NSLog(@"位置信息分享URL检索失败");
+        }
+        return;
     }
+    BMKPoiDetailShareURLOption *detailShare = [[BMKPoiDetailShareURLOption alloc] init];
+    BMKPoiInfo *poiInfo = [self.poiList objectAtIndex:self.selectIndexPath.row];
+    detailShare.uid = poiInfo.uid;
+    BOOL flag = [self.shareSearch requestPoiDetailShareURL:detailShare];
+    if (!flag) {
+        NSLog(@"位置信息分享URL检索失败");
+    }
+}
+
+#pragma mark - Public Methods
+#pragma mark - Private Methods
+
+/**
+ 发送短信
+
+ @param messageBody 短信内容
+ */
+- (void)sendMessage:(NSString *)messageBody {
     MFMessageComposeViewController *messageVC = [[MFMessageComposeViewController alloc] init];
     messageVC.body = messageBody;
     messageVC.messageComposeDelegate = self;
     [self presentViewController:messageVC animated:YES completion:nil];
 }
 
-#pragma mark - Public Methods
-#pragma mark - Private Methods
 #pragma mark - setter and getter
 - (UITableView *)tableView {
     if (!_tableView) {
@@ -146,11 +203,11 @@
     return _tableView;
 }
 
-- (NSString *)addressDescription {
-    if (!_addressDescription) {
-        _addressDescription = [NSString string];
+- (BMKReverseGeoCodeResult *)currentLocation {
+    if (!_currentLocation) {
+        _currentLocation = [[BMKReverseGeoCodeResult alloc] init];
     }
-    return _addressDescription;
+    return _currentLocation;
 }
 
 - (NSArray<BMKPoiInfo *> *)poiList {
@@ -165,6 +222,14 @@
         _selectIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     }
     return _selectIndexPath;
+}
+
+- (BMKShareURLSearch *)shareSearch {
+    if (!_shareSearch) {
+        _shareSearch = [[BMKShareURLSearch alloc] init];
+        _shareSearch.delegate = self;
+    }
+    return _shareSearch;
 }
 
 @end

@@ -9,8 +9,9 @@
 #import "HYHomeViewController.h"
 #import "HYHomeView.h"
 #import "HYNavSearchBar.h"
-#import "HYLocateChooseController.h"
+#import "HYLocateViewController.h"
 #import "UIViewController+Present.h"
+#import "HYNavigateViewController.h"
 
 @interface HYHomeViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate, HYNavSearchBarDelegate, HYHomeOperateDelegate>
 
@@ -84,19 +85,15 @@
 #pragma mark - BMKGeoCodeSearchDelegate
 - (void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error {
     if (error == 0) {
-        BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc] init];
-        annotation.coordinate = result.location;
-        annotation.title = result.address;
-        NSString *address = [NSString stringWithFormat:@"%@(%@)", result.address, result.sematicDescription];
-        
+        [self.hy_hub hideAnimated:YES];
 //        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:address preferredStyle:UIAlertControllerStyleAlert];
 //        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:nil];
 //        [alertController addAction:cancelAction];
 //        [self presentViewController:alertController animated:YES completion:nil];
         
         // 测试
-        HYLocateChooseController *locateChoostVC = [[HYLocateChooseController alloc] init];
-        locateChoostVC.addressDescription = address;
+        HYLocateViewController *locateChoostVC = [[HYLocateViewController alloc] init];
+        locateChoostVC.currentLocation = result;
         locateChoostVC.poiList = result.poiList;
         [self hy_presentViewController:locateChoostVC animated:YES completion:nil];
     }
@@ -112,11 +109,19 @@
     NSLog(@"按钮功能类型；%ld", itemType);
     switch (itemType) {
         case HYOperateItemLocate:{
-            
+            self.hy_hub.label.text = @"请稍等";
+            [self.hy_hub showAnimated:YES];
             NSLog(@"定位的经度：%f, 纬度：%f", self.locationService.userLocation.location.coordinate.longitude, self.locationService.userLocation.location.coordinate.latitude);
             
             // 反编码经纬度，获取详细地址
             [self reverseGeoSearchWithLongitude:self.locationService.userLocation.location.coordinate.longitude latitude:self.locationService.userLocation.location.coordinate.latitude];
+            break;
+        }
+        
+        case HYOperateItemNavigate:{
+            // 跳转到路径规划界面
+            HYNavigateViewController *navigateVC = [[HYNavigateViewController alloc] init];
+            [self hy_presentViewController:navigateVC animated:YES completion:nil];
             break;
         }
             

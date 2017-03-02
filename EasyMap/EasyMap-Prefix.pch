@@ -15,7 +15,8 @@
 
 /*****************Base Components*****************/
 #import "Masonry.h"
-#import <BaiduMapAPI_Base/BMKBaseComponent.h>
+#import "MBProgressHUD.h"
+#import "UIViewController+HUB.h"
 
 /*****************BaiduMap Component*****************/
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
