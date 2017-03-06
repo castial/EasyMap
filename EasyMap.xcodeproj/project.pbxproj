@@ -52,7 +52,7 @@
 		68321D8A1E5EB86C002A6F3F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		68321D951E5EB86C002A6F3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68321D981E5EB86C002A6F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		68321D9A1E5EB86C002A6F3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68321D9A1E5EB86C002A6F3F /* EasyMap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EasyMap-Info.plist"; sourceTree = "<group>"; };
 		68321DA11E5EB8E4002A6F3F /* HYAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYAppDelegate.h; path = AppDelegate/HYAppDelegate.h; sourceTree = "<group>"; };
 		68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYAppDelegate.m; path = AppDelegate/HYAppDelegate.m; sourceTree = "<group>"; };
 		68662C4C1E5ED3AD0067A662 /* EasyMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyMap-Prefix.pch"; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 				68321DA01E5EB8A5002A6F3F /* AppDelegate */,
 				68321D951E5EB86C002A6F3F /* Assets.xcassets */,
 				68321D971E5EB86C002A6F3F /* LaunchScreen.storyboard */,
-				68321D9A1E5EB86C002A6F3F /* Info.plist */,
+				68321D9A1E5EB86C002A6F3F /* EasyMap-Info.plist */,
 				68321D891E5EB86C002A6F3F /* Supporting Files */,
 			);
 			path = EasyMap;
@@ -463,7 +463,7 @@
 				DEVELOPMENT_TEAM = WUJ6929DVQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyMap/EasyMap-Prefix.pch";
-				INFOPLIST_FILE = EasyMap/Info.plist;
+				INFOPLIST_FILE = "EasyMap/EasyMap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyyy.easymap;
@@ -479,7 +479,7 @@
 				DEVELOPMENT_TEAM = WUJ6929DVQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyMap/EasyMap-Prefix.pch";
-				INFOPLIST_FILE = EasyMap/Info.plist;
+				INFOPLIST_FILE = "EasyMap/EasyMap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyyy.easymap;

@@ -7,11 +7,8 @@
 //
 
 #import "HYNavigateViewController.h"
-#import "HYSegmentControl.h"
 
 @interface HYNavigateViewController ()
-
-@property (strong, nonatomic) HYSegmentControl *segmentControl;
 
 @end
 
@@ -22,7 +19,19 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftButtonHandler)];
     self.title = @"路线";
-    [self.view addSubview:self.segmentControl];
+    
+    self.view.backgroundColor = [UIColor blueColor];
+    
+    UIViewController *vc1 = [[UIViewController alloc] init];
+    vc1.title = @"第一";
+    vc1.view.backgroundColor = [UIColor whiteColor];
+    UIViewController *vc2 = [[UIViewController alloc] init];
+    vc2.title = @"第二";
+    vc2.view.backgroundColor = [UIColor redColor];
+    UIViewController *vc3 = [[UIViewController alloc] init];
+    vc3.title = @"第三";
+    vc3.view.backgroundColor = [UIColor orangeColor];
+    self.viewControllers = @[vc1, vc2, vc3];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,11 +45,5 @@
 }
 
 #pragma mark - setter and getter
-- (HYSegmentControl *)segmentControl {
-    if (!_segmentControl) {
-        _segmentControl = [[HYSegmentControl alloc] initWithTitleArray:@[@"第一", @"第二", @"第三"]];
-    }
-    return _segmentControl;
-}
 
 @end

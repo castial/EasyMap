@@ -16,7 +16,6 @@ static const CGFloat kIndicatorHeight = 3;   // 下面选中标志高度
 
 @interface HYSegmentControl()
 
-@property (copy, nonatomic) NSArray *titleArray;
 @property (assign, nonatomic) NSInteger selectedIndex;
 @property (copy, nonatomic) NSMutableArray *buttonArray;
 @property (strong, nonatomic) UIView *indicatorView;    // 底部选中标志
@@ -24,53 +23,76 @@ static const CGFloat kIndicatorHeight = 3;   // 下面选中标志高度
 @end
 @implementation HYSegmentControl
 
-- (instancetype)initWithTitleArray:(NSArray *)titleArray {
-    self = [super initWithFrame:CGRectMake(0, 64, kScreenWidth, kSegmentHeight)];
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        self.titleArray = titleArray;
-        self.selectedIndex = 0;
-        [self initUI];
     }
     return self;
 }
 
-- (void)initUI {
-    for (int i=0; i<self.titleArray.count; i++) {
-        NSString *title = [self.titleArray objectAtIndex:i];
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(i*(kScreenWidth/self.titleArray.count), 0, kScreenWidth/self.titleArray.count, kItemHeight)];
+- (void)setupUI {
+    [self.titleArray enumerateObjectsUsingBlock:^(NSString*  _Nonnull title, NSUInteger index, BOOL * _Nonnull stop) {
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(index * (kScreenWidth/self.titleArray.count), 0, kScreenWidth/self.titleArray.count, kItemHeight)];
         [button setTitle:title forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
         button.titleLabel.font = [UIFont systemFontOfSize:14.0f];
-        button.tag = i;
+        button.tag = index;
         [button addTarget:self action:@selector(selectedCurrentItem:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonArray addObject:button];
         [self addSubview:button];
         
         // 默认
-        if (i == 0) {
+        if (index == 0) {
             button.selected = YES;
         }
-    }
-    
+    }];
     // 添加底部选中标志
     [self addSubview:self.indicatorView];
+}
+
+#pragma mark - Public Methods
+- (void)indicatorFrameDidChange:(CGFloat)progress {
+    CGRect newFrame = self.indicatorView.frame;
+    newFrame.origin.x = (self.selectedIndex + progress) * (kScreenWidth / self.titleArray.count);
+    self.indicatorView.frame = newFrame;
+}
+
+- (void)selectedItem:(NSInteger)index {
+    UIButton *lastSelectedButton = [self.buttonArray objectAtIndex:self.selectedIndex];
+    lastSelectedButton.selected = NO;
+    if (self.selectedIndex == index) {
+        // item复位
+        lastSelectedButton.selected = YES;
+        [UIView animateWithDuration:0.2 animations:^{
+            self.indicatorView.frame = CGRectMake(lastSelectedButton.tag * lastSelectedButton.bounds.size.width,kSegmentHeight - kIndicatorHeight,
+                                                  lastSelectedButton.bounds.size.width,
+                                                  kIndicatorHeight);
+        }];
+        return;
+    }
+    UIButton *selectedButton = [self.buttonArray objectAtIndex:index];
+    selectedButton.selected = YES;
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.indicatorView setFrame:CGRectMake(selectedButton.tag * selectedButton.bounds.size.width,
+                                                kSegmentHeight - kIndicatorHeight,
+                                                selectedButton.bounds.size.width,
+                                                kIndicatorHeight)];
+    }];
+    self.selectedIndex = index;
+    
+    // 通知代理
+    if ([self.delegate respondsToSelector:@selector(segmentControlDidChange:selectedIndex:)]) {
+        [self.delegate segmentControlDidChange:self selectedIndex:self.selectedIndex];
+    }
 }
 
 #pragma mark - Events
 - (void)selectedCurrentItem:(id)sender {
     UIButton *selectedButton = (UIButton *)sender;
-    if (self.selectedIndex == selectedButton.tag) {
-        return;
-    }
-    selectedButton.selected = YES;
-    UIButton *lastSelectedButton = [self.buttonArray objectAtIndex:self.selectedIndex];
-    lastSelectedButton.selected = NO;
-    [UIView animateWithDuration:0.2 animations:^{
-        [self.indicatorView setFrame:CGRectMake(selectedButton.tag * selectedButton.bounds.size.width, kSegmentHeight - kIndicatorHeight, selectedButton.bounds.size.width, kIndicatorHeight)];
-    }];
-    self.selectedIndex = selectedButton.tag;
+    
+    [self selectedItem:selectedButton.tag];
 }
 
 #pragma mark - setter and getter
@@ -82,18 +104,18 @@ static const CGFloat kIndicatorHeight = 3;   // 下面选中标志高度
     return _indicatorView;
 }
 
-- (NSArray *)titleArray {
-    if (!_titleArray) {
-        _titleArray = [NSArray array];
-    }
-    return _titleArray;
-}
-
 - (NSMutableArray *)buttonArray {
     if (!_buttonArray) {
         _buttonArray = [NSMutableArray array];
     }
     return _buttonArray;
+}
+
+- (void)setTitleArray:(NSArray *)titleArray {
+    _titleArray = titleArray;
+    
+    // 根据数组制定UI
+    [self setupUI];
 }
 
 @end

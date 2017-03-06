@@ -10,4 +10,6 @@
 
 @interface HYViewPagerController : UIViewController
 
+@property (copy, nonatomic) NSArray<UIViewController *> *viewControllers;   // 控制器数组
+
 @end

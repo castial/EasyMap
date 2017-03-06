@@ -6,8 +6,8 @@
 //  Copyright © 2017年 hyyy. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HYViewPagerController.h"
 
-@interface HYNavigateViewController : UIViewController
+@interface HYNavigateViewController : HYViewPagerController
 
 @end

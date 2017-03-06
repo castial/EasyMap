@@ -12,6 +12,7 @@
 #import "HYLocateViewController.h"
 #import "UIViewController+Present.h"
 #import "HYNavigateViewController.h"
+#import "HYViewPagerController.h"
 
 @interface HYHomeViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate, HYNavSearchBarDelegate, HYHomeOperateDelegate>
 
