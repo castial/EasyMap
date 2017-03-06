@@ -7,11 +7,12 @@
 //
 
 #import "UIViewController+Present.h"
+#import "HYNavigationController.h"
 
 @implementation UIViewController (Present)
 
 - (void)hy_presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewControllerToPresent];
+    HYNavigationController *nav = [[HYNavigationController alloc] initWithRootViewController:viewControllerToPresent];
     [self presentViewController:nav animated:YES completion:completion];
 }
 

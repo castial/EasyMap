@@ -7,6 +7,7 @@
 //
 
 #import "HYNavigateViewController.h"
+#import "HYLocateViewController.h"
 
 @interface HYNavigateViewController ()
 
@@ -17,8 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftButtonHandler)];
     self.title = @"路线";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(pushHandler)];
     
     self.view.backgroundColor = [UIColor blueColor];
     
@@ -40,8 +41,9 @@
 }
 
 #pragma mark - Events
-- (void)clickedLeftButtonHandler {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)pushHandler {
+    HYLocateViewController *locateVC = [[HYLocateViewController alloc] init];
+    [self.navigationController pushViewController:locateVC animated:YES];
 }
 
 #pragma mark - setter and getter

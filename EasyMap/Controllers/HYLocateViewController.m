@@ -26,7 +26,6 @@
     [super viewDidLoad];
     
     self.title = @"选择位置";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickedBackBtnHandler)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(clickedSendBtnHandler)];
     
     [self.view addSubview:self.tableView];
@@ -71,9 +70,11 @@
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0f];
         cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     }
-    BMKPoiInfo *poiInfo = [self.poiList objectAtIndex:indexPath.row];
-    cell.textLabel.text = poiInfo.name;
-    cell.detailTextLabel.text = poiInfo.address;
+    if (self.poiList.count > 0) {
+        BMKPoiInfo *poiInfo = [self.poiList objectAtIndex:indexPath.row];
+        cell.textLabel.text = poiInfo.name;
+        cell.detailTextLabel.text = poiInfo.address;
+    }
     
     // 首个显示详细位置
     if (indexPath.section == 0 && indexPath.row == 0) {
@@ -149,10 +150,6 @@
 }
 
 #pragma mark - Events
-- (void)clickedBackBtnHandler {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)clickedSendBtnHandler {
     
     self.hy_hub.label.text = @"正在获取分享短串，请稍后...";
