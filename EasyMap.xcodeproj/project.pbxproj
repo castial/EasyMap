@@ -10,24 +10,20 @@
 		681D6EB41E6D5B2A00243277 /* HYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D6EB31E6D5B2A00243277 /* HYNavigationController.m */; };
 		681D6EBD1E6D624500243277 /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 681D6EBB1E6D624500243277 /* btn_back@2x.png */; };
 		681D6EBE1E6D624500243277 /* btn_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 681D6EBC1E6D624500243277 /* btn_back@3x.png */; };
-		6820016C1E63EC00008C6A22 /* HYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6820016B1E63EC00008C6A22 /* HYHomeViewController.m */; };
-		6820016F1E63ECB9008C6A22 /* HYHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6820016E1E63ECB9008C6A22 /* HYHomeView.m */; };
-		682001751E63F753008C6A22 /* HYNavSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 682001741E63F753008C6A22 /* HYNavSearchBar.m */; };
 		6820017A1E63FD62008C6A22 /* UIViewController+AOP.m in Sources */ = {isa = PBXBuildFile; fileRef = 682001791E63FD62008C6A22 /* UIViewController+AOP.m */; };
 		682302BB1E67E3E900A178B8 /* UIViewController+HUB.m in Sources */ = {isa = PBXBuildFile; fileRef = 682302BA1E67E3E900A178B8 /* UIViewController+HUB.m */; };
-		682302BE1E67F82C00A178B8 /* HYNavigateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682302BD1E67F82C00A178B8 /* HYNavigateViewController.m */; };
-		682302C11E67F9FE00A178B8 /* HYLocateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682302C01E67F9FE00A178B8 /* HYLocateViewController.m */; };
-		682302C41E67FFBA00A178B8 /* HYNavigateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682302C31E67FFBA00A178B8 /* HYNavigateView.m */; };
 		682302CD1E68213200A178B8 /* HYViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682302CC1E68213200A178B8 /* HYViewPagerController.m */; };
 		682302D01E68221C00A178B8 /* HYSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 682302CF1E68221C00A178B8 /* HYSegmentControl.m */; };
 		68321D8B1E5EB86C002A6F3F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68321D8A1E5EB86C002A6F3F /* main.m */; };
 		68321D961E5EB86C002A6F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68321D951E5EB86C002A6F3F /* Assets.xcassets */; };
 		68321D991E5EB86C002A6F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68321D971E5EB86C002A6F3F /* LaunchScreen.storyboard */; };
 		68321DA31E5EB8E4002A6F3F /* HYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */; };
-		688819671E6E46690015FDB3 /* HYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819661E6E46690015FDB3 /* HYSearchViewController.m */; };
-		6888196A1E6E59520015FDB3 /* HYWalkQueryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819691E6E59520015FDB3 /* HYWalkQueryController.m */; };
-		6888196D1E6E59C80015FDB3 /* HYRideQueryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888196C1E6E59C80015FDB3 /* HYRideQueryController.m */; };
-		6896862D1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896862C1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m */; };
+		688819711E6E9A930015FDB3 /* HYLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819701E6E9A930015FDB3 /* HYLocationManager.m */; };
+		688819761E6EA9890015FDB3 /* HYNavSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819751E6EA9890015FDB3 /* HYNavSearchBar.m */; };
+		688819791E6EABFD0015FDB3 /* HYLocationMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819781E6EABFD0015FDB3 /* HYLocationMainController.m */; };
+		6888197C1E6EAC7A0015FDB3 /* HYTrackMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888197B1E6EAC7A0015FDB3 /* HYTrackMainViewController.m */; };
+		6888197F1E6EAD450015FDB3 /* HYAccountMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888197E1E6EAD450015FDB3 /* HYAccountMainController.m */; };
+		688819821E6EB0BD0015FDB3 /* HYTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819811E6EB0BD0015FDB3 /* HYTabBarController.m */; };
 		68A30F501E66A6D0009398C0 /* UIViewController+Present.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A30F4F1E66A6D0009398C0 /* UIViewController+Present.m */; };
 		AB8F33E23423D554A8C336D6 /* libPods-EasyMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D214ED617C83E2D915A4BA97 /* libPods-EasyMap.a */; };
 /* End PBXBuildFile section */
@@ -38,22 +34,10 @@
 		681D6EB31E6D5B2A00243277 /* HYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYNavigationController.m; path = Expand/Components/HYNavigationController/HYNavigationController.m; sourceTree = "<group>"; };
 		681D6EBB1E6D624500243277 /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_back@2x.png"; path = "Expand/Components/HYNavigationController/btn_back@2x.png"; sourceTree = "<group>"; };
 		681D6EBC1E6D624500243277 /* btn_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_back@3x.png"; path = "Expand/Components/HYNavigationController/btn_back@3x.png"; sourceTree = "<group>"; };
-		6820016A1E63EC00008C6A22 /* HYHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYHomeViewController.h; sourceTree = "<group>"; };
-		6820016B1E63EC00008C6A22 /* HYHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYHomeViewController.m; sourceTree = "<group>"; };
-		6820016D1E63ECB9008C6A22 /* HYHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYHomeView.h; path = Views/HYHomeView.h; sourceTree = "<group>"; };
-		6820016E1E63ECB9008C6A22 /* HYHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYHomeView.m; path = Views/HYHomeView.m; sourceTree = "<group>"; };
-		682001731E63F753008C6A22 /* HYNavSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYNavSearchBar.h; path = Views/HYNavSearchBar.h; sourceTree = "<group>"; };
-		682001741E63F753008C6A22 /* HYNavSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYNavSearchBar.m; path = Views/HYNavSearchBar.m; sourceTree = "<group>"; };
 		682001781E63FD62008C6A22 /* UIViewController+AOP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AOP.h"; path = "Expand/Category/UIViewController+AOP.h"; sourceTree = "<group>"; };
 		682001791E63FD62008C6A22 /* UIViewController+AOP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+AOP.m"; path = "Expand/Category/UIViewController+AOP.m"; sourceTree = "<group>"; };
 		682302B91E67E3E900A178B8 /* UIViewController+HUB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+HUB.h"; path = "Expand/Category/UIViewController+HUB.h"; sourceTree = "<group>"; };
 		682302BA1E67E3E900A178B8 /* UIViewController+HUB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+HUB.m"; path = "Expand/Category/UIViewController+HUB.m"; sourceTree = "<group>"; };
-		682302BC1E67F82C00A178B8 /* HYNavigateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYNavigateViewController.h; sourceTree = "<group>"; };
-		682302BD1E67F82C00A178B8 /* HYNavigateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYNavigateViewController.m; sourceTree = "<group>"; };
-		682302BF1E67F9FE00A178B8 /* HYLocateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLocateViewController.h; sourceTree = "<group>"; };
-		682302C01E67F9FE00A178B8 /* HYLocateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLocateViewController.m; sourceTree = "<group>"; };
-		682302C21E67FFBA00A178B8 /* HYNavigateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYNavigateView.h; path = Views/HYNavigateView.h; sourceTree = "<group>"; };
-		682302C31E67FFBA00A178B8 /* HYNavigateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYNavigateView.m; path = Views/HYNavigateView.m; sourceTree = "<group>"; };
 		682302CB1E68213200A178B8 /* HYViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYViewPagerController.h; sourceTree = "<group>"; };
 		682302CC1E68213200A178B8 /* HYViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYViewPagerController.m; sourceTree = "<group>"; };
 		682302CE1E68221C00A178B8 /* HYSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSegmentControl.h; sourceTree = "<group>"; };
@@ -66,14 +50,18 @@
 		68321DA11E5EB8E4002A6F3F /* HYAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYAppDelegate.h; path = AppDelegate/HYAppDelegate.h; sourceTree = "<group>"; };
 		68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYAppDelegate.m; path = AppDelegate/HYAppDelegate.m; sourceTree = "<group>"; };
 		68662C4C1E5ED3AD0067A662 /* EasyMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyMap-Prefix.pch"; sourceTree = "<group>"; };
-		688819651E6E46690015FDB3 /* HYSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSearchViewController.h; sourceTree = "<group>"; };
-		688819661E6E46690015FDB3 /* HYSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSearchViewController.m; sourceTree = "<group>"; };
-		688819681E6E59520015FDB3 /* HYWalkQueryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWalkQueryController.h; sourceTree = "<group>"; };
-		688819691E6E59520015FDB3 /* HYWalkQueryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYWalkQueryController.m; sourceTree = "<group>"; };
-		6888196B1E6E59C80015FDB3 /* HYRideQueryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYRideQueryController.h; sourceTree = "<group>"; };
-		6888196C1E6E59C80015FDB3 /* HYRideQueryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYRideQueryController.m; sourceTree = "<group>"; };
-		6896862B1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HYAppDelegate+BaiduMap.h"; path = "AppDelegate/HYAppDelegate+BaiduMap.h"; sourceTree = "<group>"; };
-		6896862C1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HYAppDelegate+BaiduMap.m"; path = "AppDelegate/HYAppDelegate+BaiduMap.m"; sourceTree = "<group>"; };
+		6888196F1E6E9A930015FDB3 /* HYLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYLocationManager.h; path = Expand/Utils/HYLocationManager.h; sourceTree = "<group>"; };
+		688819701E6E9A930015FDB3 /* HYLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYLocationManager.m; path = Expand/Utils/HYLocationManager.m; sourceTree = "<group>"; };
+		688819741E6EA9890015FDB3 /* HYNavSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYNavSearchBar.h; sourceTree = "<group>"; };
+		688819751E6EA9890015FDB3 /* HYNavSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYNavSearchBar.m; sourceTree = "<group>"; };
+		688819771E6EABFD0015FDB3 /* HYLocationMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLocationMainController.h; sourceTree = "<group>"; };
+		688819781E6EABFD0015FDB3 /* HYLocationMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLocationMainController.m; sourceTree = "<group>"; };
+		6888197A1E6EAC7A0015FDB3 /* HYTrackMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTrackMainViewController.h; sourceTree = "<group>"; };
+		6888197B1E6EAC7A0015FDB3 /* HYTrackMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTrackMainViewController.m; sourceTree = "<group>"; };
+		6888197D1E6EAD450015FDB3 /* HYAccountMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYAccountMainController.h; sourceTree = "<group>"; };
+		6888197E1E6EAD450015FDB3 /* HYAccountMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYAccountMainController.m; sourceTree = "<group>"; };
+		688819801E6EB0BD0015FDB3 /* HYTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTabBarController.h; sourceTree = "<group>"; };
+		688819811E6EB0BD0015FDB3 /* HYTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTabBarController.m; sourceTree = "<group>"; };
 		68A30F4E1E66A6D0009398C0 /* UIViewController+Present.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Present.h"; path = "Expand/Category/UIViewController+Present.h"; sourceTree = "<group>"; };
 		68A30F4F1E66A6D0009398C0 /* UIViewController+Present.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Present.m"; path = "Expand/Category/UIViewController+Present.m"; sourceTree = "<group>"; };
 		C7798A2983E553E5E5095F1E /* Pods-EasyMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyMap/Pods-EasyMap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,12 +111,6 @@
 		682001681E63EBDC008C6A22 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6820016D1E63ECB9008C6A22 /* HYHomeView.h */,
-				6820016E1E63ECB9008C6A22 /* HYHomeView.m */,
-				682001731E63F753008C6A22 /* HYNavSearchBar.h */,
-				682001741E63F753008C6A22 /* HYNavSearchBar.m */,
-				682302C21E67FFBA00A178B8 /* HYNavigateView.h */,
-				682302C31E67FFBA00A178B8 /* HYNavigateView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -136,18 +118,14 @@
 		682001691E63EC00008C6A22 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				682302BF1E67F9FE00A178B8 /* HYLocateViewController.h */,
-				682302C01E67F9FE00A178B8 /* HYLocateViewController.m */,
-				6820016A1E63EC00008C6A22 /* HYHomeViewController.h */,
-				6820016B1E63EC00008C6A22 /* HYHomeViewController.m */,
-				682302BC1E67F82C00A178B8 /* HYNavigateViewController.h */,
-				682302BD1E67F82C00A178B8 /* HYNavigateViewController.m */,
-				688819651E6E46690015FDB3 /* HYSearchViewController.h */,
-				688819661E6E46690015FDB3 /* HYSearchViewController.m */,
-				688819681E6E59520015FDB3 /* HYWalkQueryController.h */,
-				688819691E6E59520015FDB3 /* HYWalkQueryController.m */,
-				6888196B1E6E59C80015FDB3 /* HYRideQueryController.h */,
-				6888196C1E6E59C80015FDB3 /* HYRideQueryController.m */,
+				688819771E6EABFD0015FDB3 /* HYLocationMainController.h */,
+				688819781E6EABFD0015FDB3 /* HYLocationMainController.m */,
+				6888197A1E6EAC7A0015FDB3 /* HYTrackMainViewController.h */,
+				6888197B1E6EAC7A0015FDB3 /* HYTrackMainViewController.m */,
+				6888197D1E6EAD450015FDB3 /* HYAccountMainController.h */,
+				6888197E1E6EAD450015FDB3 /* HYAccountMainController.m */,
+				688819801E6EB0BD0015FDB3 /* HYTabBarController.h */,
+				688819811E6EB0BD0015FDB3 /* HYTabBarController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -155,6 +133,7 @@
 		682001761E63FBED008C6A22 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				6888196E1E6E9A730015FDB3 /* Utils */,
 				682302C51E68057800A178B8 /* Components */,
 				682001771E63FBFD008C6A22 /* Category */,
 			);
@@ -177,6 +156,7 @@
 		682302C51E68057800A178B8 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				688819731E6EA9890015FDB3 /* HYNavSearchBar */,
 				681D6EB11E6D5A9700243277 /* HYNavigationController */,
 				682302CA1E68213200A178B8 /* HYViewPagerController */,
 			);
@@ -242,10 +222,27 @@
 			children = (
 				68321DA11E5EB8E4002A6F3F /* HYAppDelegate.h */,
 				68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */,
-				6896862B1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.h */,
-				6896862C1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m */,
 			);
 			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		6888196E1E6E9A730015FDB3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6888196F1E6E9A930015FDB3 /* HYLocationManager.h */,
+				688819701E6E9A930015FDB3 /* HYLocationManager.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		688819731E6EA9890015FDB3 /* HYNavSearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				688819741E6EA9890015FDB3 /* HYNavSearchBar.h */,
+				688819751E6EA9890015FDB3 /* HYNavSearchBar.m */,
+			);
+			name = HYNavSearchBar;
+			path = Expand/Components/HYNavSearchBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +281,11 @@
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = WUJ6929DVQ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -372,24 +374,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6888197F1E6EAD450015FDB3 /* HYAccountMainController.m in Sources */,
 				682302BB1E67E3E900A178B8 /* UIViewController+HUB.m in Sources */,
-				682001751E63F753008C6A22 /* HYNavSearchBar.m in Sources */,
-				6888196A1E6E59520015FDB3 /* HYWalkQueryController.m in Sources */,
-				682302C41E67FFBA00A178B8 /* HYNavigateView.m in Sources */,
-				682302C11E67F9FE00A178B8 /* HYLocateViewController.m in Sources */,
 				682302D01E68221C00A178B8 /* HYSegmentControl.m in Sources */,
 				6820017A1E63FD62008C6A22 /* UIViewController+AOP.m in Sources */,
+				688819761E6EA9890015FDB3 /* HYNavSearchBar.m in Sources */,
 				682302CD1E68213200A178B8 /* HYViewPagerController.m in Sources */,
+				688819711E6E9A930015FDB3 /* HYLocationManager.m in Sources */,
 				68321D8B1E5EB86C002A6F3F /* main.m in Sources */,
+				688819821E6EB0BD0015FDB3 /* HYTabBarController.m in Sources */,
 				681D6EB41E6D5B2A00243277 /* HYNavigationController.m in Sources */,
-				688819671E6E46690015FDB3 /* HYSearchViewController.m in Sources */,
-				6888196D1E6E59C80015FDB3 /* HYRideQueryController.m in Sources */,
-				682302BE1E67F82C00A178B8 /* HYNavigateViewController.m in Sources */,
-				6896862D1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m in Sources */,
+				6888197C1E6EAC7A0015FDB3 /* HYTrackMainViewController.m in Sources */,
+				688819791E6EABFD0015FDB3 /* HYLocationMainController.m in Sources */,
 				68A30F501E66A6D0009398C0 /* UIViewController+Present.m in Sources */,
-				6820016C1E63EC00008C6A22 /* HYHomeViewController.m in Sources */,
 				68321DA31E5EB8E4002A6F3F /* HYAppDelegate.m in Sources */,
-				6820016F1E63ECB9008C6A22 /* HYHomeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
