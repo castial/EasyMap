@@ -7,7 +7,9 @@
 //
 
 #import "HYNavigateViewController.h"
-#import "HYLocateViewController.h"
+#import "HYSearchViewController.h"
+#import "HYWalkQueryController.h"
+#import "HYRideQueryController.h"
 
 @interface HYNavigateViewController ()
 
@@ -19,20 +21,12 @@
     [super viewDidLoad];
     
     self.title = @"路线";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back@3x.png"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftItemHandler)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(pushHandler)];
     
-    self.view.backgroundColor = [UIColor blueColor];
-    
-    UIViewController *vc1 = [[UIViewController alloc] init];
-    vc1.title = @"第一";
-    vc1.view.backgroundColor = [UIColor whiteColor];
-    UIViewController *vc2 = [[UIViewController alloc] init];
-    vc2.title = @"第二";
-    vc2.view.backgroundColor = [UIColor redColor];
-    UIViewController *vc3 = [[UIViewController alloc] init];
-    vc3.title = @"第三";
-    vc3.view.backgroundColor = [UIColor orangeColor];
-    self.viewControllers = @[vc1, vc2, vc3];
+    HYWalkQueryController *walkVC = [[HYWalkQueryController alloc] init];
+    HYRideQueryController *rideVC = [[HYRideQueryController alloc] init];
+    self.viewControllers = @[walkVC, rideVC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,9 +35,13 @@
 }
 
 #pragma mark - Events
+- (void)clickedLeftItemHandler {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)pushHandler {
-    HYLocateViewController *locateVC = [[HYLocateViewController alloc] init];
-    [self.navigationController pushViewController:locateVC animated:YES];
+    HYSearchViewController *searchVC = [[HYSearchViewController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 #pragma mark - setter and getter

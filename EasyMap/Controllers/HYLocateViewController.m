@@ -26,6 +26,7 @@
     [super viewDidLoad];
     
     self.title = @"选择位置";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back@3x.png"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftItemHandler)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(clickedSendBtnHandler)];
     
     [self.view addSubview:self.tableView];
@@ -150,6 +151,10 @@
 }
 
 #pragma mark - Events
+- (void)clickedLeftItemHandler {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)clickedSendBtnHandler {
     
     self.hy_hub.label.text = @"正在获取分享短串，请稍后...";

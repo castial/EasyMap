@@ -24,6 +24,9 @@
 		68321D961E5EB86C002A6F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68321D951E5EB86C002A6F3F /* Assets.xcassets */; };
 		68321D991E5EB86C002A6F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68321D971E5EB86C002A6F3F /* LaunchScreen.storyboard */; };
 		68321DA31E5EB8E4002A6F3F /* HYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */; };
+		688819671E6E46690015FDB3 /* HYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819661E6E46690015FDB3 /* HYSearchViewController.m */; };
+		6888196A1E6E59520015FDB3 /* HYWalkQueryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819691E6E59520015FDB3 /* HYWalkQueryController.m */; };
+		6888196D1E6E59C80015FDB3 /* HYRideQueryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888196C1E6E59C80015FDB3 /* HYRideQueryController.m */; };
 		6896862D1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896862C1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m */; };
 		68A30F501E66A6D0009398C0 /* UIViewController+Present.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A30F4F1E66A6D0009398C0 /* UIViewController+Present.m */; };
 		AB8F33E23423D554A8C336D6 /* libPods-EasyMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D214ED617C83E2D915A4BA97 /* libPods-EasyMap.a */; };
@@ -63,6 +66,12 @@
 		68321DA11E5EB8E4002A6F3F /* HYAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYAppDelegate.h; path = AppDelegate/HYAppDelegate.h; sourceTree = "<group>"; };
 		68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYAppDelegate.m; path = AppDelegate/HYAppDelegate.m; sourceTree = "<group>"; };
 		68662C4C1E5ED3AD0067A662 /* EasyMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyMap-Prefix.pch"; sourceTree = "<group>"; };
+		688819651E6E46690015FDB3 /* HYSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSearchViewController.h; sourceTree = "<group>"; };
+		688819661E6E46690015FDB3 /* HYSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSearchViewController.m; sourceTree = "<group>"; };
+		688819681E6E59520015FDB3 /* HYWalkQueryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWalkQueryController.h; sourceTree = "<group>"; };
+		688819691E6E59520015FDB3 /* HYWalkQueryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYWalkQueryController.m; sourceTree = "<group>"; };
+		6888196B1E6E59C80015FDB3 /* HYRideQueryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYRideQueryController.h; sourceTree = "<group>"; };
+		6888196C1E6E59C80015FDB3 /* HYRideQueryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYRideQueryController.m; sourceTree = "<group>"; };
 		6896862B1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HYAppDelegate+BaiduMap.h"; path = "AppDelegate/HYAppDelegate+BaiduMap.h"; sourceTree = "<group>"; };
 		6896862C1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HYAppDelegate+BaiduMap.m"; path = "AppDelegate/HYAppDelegate+BaiduMap.m"; sourceTree = "<group>"; };
 		68A30F4E1E66A6D0009398C0 /* UIViewController+Present.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Present.h"; path = "Expand/Category/UIViewController+Present.h"; sourceTree = "<group>"; };
@@ -133,6 +142,12 @@
 				6820016B1E63EC00008C6A22 /* HYHomeViewController.m */,
 				682302BC1E67F82C00A178B8 /* HYNavigateViewController.h */,
 				682302BD1E67F82C00A178B8 /* HYNavigateViewController.m */,
+				688819651E6E46690015FDB3 /* HYSearchViewController.h */,
+				688819661E6E46690015FDB3 /* HYSearchViewController.m */,
+				688819681E6E59520015FDB3 /* HYWalkQueryController.h */,
+				688819691E6E59520015FDB3 /* HYWalkQueryController.m */,
+				6888196B1E6E59C80015FDB3 /* HYRideQueryController.h */,
+				6888196C1E6E59C80015FDB3 /* HYRideQueryController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -359,6 +374,7 @@
 			files = (
 				682302BB1E67E3E900A178B8 /* UIViewController+HUB.m in Sources */,
 				682001751E63F753008C6A22 /* HYNavSearchBar.m in Sources */,
+				6888196A1E6E59520015FDB3 /* HYWalkQueryController.m in Sources */,
 				682302C41E67FFBA00A178B8 /* HYNavigateView.m in Sources */,
 				682302C11E67F9FE00A178B8 /* HYLocateViewController.m in Sources */,
 				682302D01E68221C00A178B8 /* HYSegmentControl.m in Sources */,
@@ -366,6 +382,8 @@
 				682302CD1E68213200A178B8 /* HYViewPagerController.m in Sources */,
 				68321D8B1E5EB86C002A6F3F /* main.m in Sources */,
 				681D6EB41E6D5B2A00243277 /* HYNavigationController.m in Sources */,
+				688819671E6E46690015FDB3 /* HYSearchViewController.m in Sources */,
+				6888196D1E6E59C80015FDB3 /* HYRideQueryController.m in Sources */,
 				682302BE1E67F82C00A178B8 /* HYNavigateViewController.m in Sources */,
 				6896862D1E5FD16A001CD991 /* HYAppDelegate+BaiduMap.m in Sources */,
 				68A30F501E66A6D0009398C0 /* UIViewController+Present.m in Sources */,
