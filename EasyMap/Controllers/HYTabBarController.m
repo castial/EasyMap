@@ -33,6 +33,9 @@
     
     // 修改TabBar效果
     [[UITabBar appearance] setTintColor:[UIColor blueColor]];
+    // 取消UITabBar横线
+//    [[UITabBar appearance] setBackgroundImage:[[UIImage alloc] init]];
+//    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
 }
 
 #pragma mark - Private Methods
