@@ -26,10 +26,6 @@
     
     // 为每一个ViewController添加一个默认背景色(白色)
     self.view.backgroundColor = [UIColor whiteColor];
-    // 为每一个ViewController添加一个指示器
-    self.hy_hub = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].keyWindow];
-    self.hy_hub.removeFromSuperViewOnHide = YES;
-    [[UIApplication sharedApplication].keyWindow addSubview:self.hy_hub];
 }
 
 #pragma mark - private methods

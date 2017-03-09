@@ -8,10 +8,11 @@
 
 #import "HYLocationMainController.h"
 #import "HYLocateView.h"
+#import <MessageUI/MessageUI.h>
 
 typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
 
-@interface HYLocationMainController ()<HYLocateViewDelegate, CLLocationManagerDelegate>
+@interface HYLocationMainController ()<HYLocateViewDelegate, CLLocationManagerDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (strong, nonatomic) HYLocateView *locateView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -51,6 +52,7 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
         [self.locationManager requestAlwaysAuthorization];
     }
     [self.locationManager startUpdatingLocation];
+    [[HYProgressHelper sharedInstance] showLoading:@"开始定位"];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -60,6 +62,8 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
     NSLog(@"经度：%f, 纬度: %f", coordinate.longitude, coordinate.latitude);
     [self geocodeLocationWithLocation:location completionHandler:^(NSString *placeInfo) {
         NSLog(@"当前位置: %@", placeInfo);
+        [[HYProgressHelper sharedInstance] hideLoading];
+        [self showMessageController:placeInfo];
     }];
     
     // 停止定位
@@ -68,6 +72,22 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"定位出错");
+    [[HYProgressHelper sharedInstance] showToast:error.description];
+}
+
+#pragma mark - MFMessageComposeViewControllerDelegate
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    if (result == MessageComposeResultSent) {
+        // 发送成功
+        [[HYProgressHelper sharedInstance] showToast:@"短信发送成功"];
+    }else if (result == MessageComposeResultCancelled) {
+        // 取消发送
+//        [[HYProgressHelper sharedInstance] showToast:@"短信取消发送"];
+    }else {
+        // 发送失败
+        [[HYProgressHelper sharedInstance] showToast:@"短信取消发送"];
+    }
 }
 
 #pragma mark - Private Methods
@@ -83,10 +103,25 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
     }];
 }
 
+// 跳转到发送短信界面
+- (void)showMessageController:(NSString *)message {
+    if ([MFMessageComposeViewController canSendText]) {
+        MFMessageComposeViewController *messageVC = [[MFMessageComposeViewController alloc] init];
+        // 如果本地有紧急联系人的话，填写联系人手机号
+        messageVC.recipients = @[@"17607557133"];
+        messageVC.body = message;
+        messageVC.messageComposeDelegate = self;
+        [self presentViewController:messageVC animated:YES completion:nil];
+        [[[[messageVC viewControllers] lastObject] navigationItem] setTitle:@"定位信息"];   // 修改短信界面
+    }else {
+        [[HYProgressHelper sharedInstance] showToast:@"该设备不支持短信功能"];
+    }
+}
+
 #pragma mark - setter and getter
 - (HYLocateView *)locateView {
     if (!_locateView) {
-        _locateView = [[HYLocateView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+        _locateView = [[HYLocateView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         _locateView.delegate = self;
     }
     return _locateView;

@@ -15,9 +15,8 @@
 
 /*****************Base Components*****************/
 #import "Masonry.h"
-#import "MBProgressHUD.h"
-#import "UIViewController+HUB.h"
 #import <CoreLocation/CoreLocation.h>
+#import "HYProgressHelper.h"
 
 /*****************BaiduMap Component*****************/
 

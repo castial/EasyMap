@@ -32,7 +32,8 @@
     [self setupChildVC:accountVC title:@"我" imageName:nil selectedImageName:nil];
     
     // 修改TabBar效果
-    [[UITabBar appearance] setTintColor:[UIColor blueColor]];
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:58.0/255.0 green:155.0/255.0 blue:252.0/255.0 alpha:1.0f]];
+    [[UITabBar appearance] setTranslucent:NO];
     // 取消UITabBar横线
 //    [[UITabBar appearance] setBackgroundImage:[[UIImage alloc] init]];
 //    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
