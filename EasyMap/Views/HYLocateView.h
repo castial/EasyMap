@@ -19,4 +19,10 @@
 
 @property (weak, nonatomic) id<HYLocateViewDelegate> delegate;
 
+// 开始定位按钮动画
+- (void)startLocateAnimation;
+
+// 结束定位按钮动画
+- (void)endLocateAnimation;
+
 @end

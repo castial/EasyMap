@@ -53,6 +53,7 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
     }
     [self.locationManager startUpdatingLocation];
     [[HYProgressHelper sharedInstance] showLoading:@"开始定位"];
+    [self.locateView startLocateAnimation];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -63,6 +64,7 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
     [self geocodeLocationWithLocation:location completionHandler:^(NSString *placeInfo) {
         NSLog(@"当前位置: %@", placeInfo);
         [[HYProgressHelper sharedInstance] hideLoading];
+        [self.locateView endLocateAnimation];
         [self showMessageController:placeInfo];
     }];
     
@@ -72,6 +74,7 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"定位出错");
+    [self.locateView endLocateAnimation];
     [[HYProgressHelper sharedInstance] showToast:error.description];
 }
 

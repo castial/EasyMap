@@ -15,6 +15,8 @@
 @property (strong, nonatomic) UIButton *locateBtn;
 @property (strong, nonatomic) UITableView *tableView;
 
+@property (strong, nonatomic) CAShapeLayer *shapeLayer;
+
 @end
 
 @implementation HYLocateView
@@ -34,6 +36,7 @@
     [self.locateHeaderView addSubview:self.locateBtn];
     [self addSubview:self.locateHeaderView];
     [self addSubview:self.tableView];
+    [self.locateBtn.layer addSublayer:self.shapeLayer];
 }
 
 - (void)initLayout {
@@ -50,6 +53,23 @@
         make.left.bottom.right.equalTo(self);
         make.top.equalTo(self.locateHeaderView.mas_bottom);
     }];
+}
+
+#pragma mark - Public Methods
+- (void)startLocateAnimation {
+    self.shapeLayer.strokeEnd = 0.9;
+    CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    basicAnimation.fromValue = 0;
+    basicAnimation.toValue = @(M_PI * 2);
+    basicAnimation.duration = 1;
+    basicAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    basicAnimation.repeatCount = INFINITY;
+    [self.shapeLayer addAnimation:basicAnimation forKey:@"infinity_rotate"];
+}
+
+- (void)endLocateAnimation {
+    self.shapeLayer.strokeEnd = 1;
+    [self.shapeLayer removeAnimationForKey:@"infinity_rotate"];
 }
 
 #pragma mark - UITableViewDataSource
@@ -98,10 +118,7 @@
 - (UIButton *)locateBtn {
     if (!_locateBtn) {
         _locateBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
-        _locateBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-        _locateBtn.layer.borderWidth = 2;
         _locateBtn.layer.cornerRadius = 150 / 2;
-        _locateBtn.layer.masksToBounds = YES;
         [_locateBtn addTarget:self action:@selector(clickedLocateBtnHandler) forControlEvents:UIControlEventTouchUpInside];
     }
     return _locateBtn;
@@ -122,6 +139,26 @@
         _locateHeaderView.backgroundColor = [UIColor colorWithRed:58.0/255.0 green:155.0/255.0 blue:252.0/255.0 alpha:1.0f];
     }
     return _locateHeaderView;
+}
+
+- (CAShapeLayer *)shapeLayer {
+    if (!_shapeLayer) {
+        CGFloat radius = 150;   // 圆形直径
+        CGRect frame = CGRectMake(0, 0, radius, radius);
+        _shapeLayer = [CAShapeLayer layer];
+        _shapeLayer.frame = frame;
+        _shapeLayer.strokeColor = [UIColor whiteColor].CGColor;
+        _shapeLayer.fillColor = [UIColor clearColor].CGColor;
+        
+        // 画圆
+        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:frame];
+        _shapeLayer.path = path.CGPath;
+        _shapeLayer.lineWidth = 2;
+        _shapeLayer.lineCap = kCALineCapRound;  // 线条结尾的样子
+        _shapeLayer.strokeStart = 0;
+        _shapeLayer.strokeEnd = 1;
+    }
+    return _shapeLayer;
 }
 
 @end
