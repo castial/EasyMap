@@ -115,9 +115,7 @@
         }
             
         case 1:{
-            if ([self.delegate respondsToSelector:@selector(didSelectLocateEvent:)]) {
-                [self.delegate didSelectLocateEvent:HYLocateEventContact];
-            }
+            [self hy_routerEventWithName:HYControlEventTouchUpInside userInfo:[NSNumber numberWithInteger:HYLocateEventContact]];
             break;
         }
             
@@ -132,9 +130,7 @@
 
 #pragma mark - Events
 - (void)clickedLocateBtnHandler {
-    if ([self.delegate respondsToSelector:@selector(didSelectLocateEvent:)]) {
-        [self.delegate didSelectLocateEvent:HYLocateEventLocate];
-    }
+    [self hy_routerEventWithName:HYControlEventTouchUpInside userInfo:[NSNumber numberWithInteger:HYLocateEventLocate]];
 }
 
 #pragma mark - setter and getter

@@ -10,10 +10,9 @@
 #import "HYContactAddCell.h"
 #import "Contact.h"
 
-@interface HYContactAddController ()<UITableViewDelegate, UITableViewDataSource, HYContactAddCellDelegate>
+@interface HYContactAddController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
-@property (copy, nonatomic) NSArray *introArray;
 @property (copy, nonatomic) NSArray *titleArray;
 @property (strong, nonatomic) Contact *contact;
 
@@ -21,10 +20,12 @@
 
 @implementation HYContactAddController
 
+#pragma mark - LifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"添加联系人";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(clickedContactDoneHandler)];
     [self.view addSubview:self.tableView];
 }
 
@@ -34,7 +35,7 @@
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.introArray.count;
+    return self.titleArray.count;
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -43,9 +44,7 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
     HYContactAddCell *cell = [HYContactAddCell cellWithTableView:tableView];
-    cell.delegate = self;
-    cell.title = [self.titleArray objectAtIndex:indexPath.section];
-    cell.cellPlaceHolder = [self.introArray objectAtIndex:indexPath.section];
+    cell.titleLabel.text = [self.titleArray objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -62,10 +61,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark - HYContactAddCellDelegate
-- (void)handleTextFieldChanged:(HYContactAddCell *)cell {
+#pragma mark - Events
+- (void)hy_routerEventWithName:(HYControlEvent)eventName userInfo:(NSObject *)userInfo {
+    HYContactAddCell *cell = (HYContactAddCell *)userInfo;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    if (indexPath.section == 0) {
+    if (indexPath.row == 0) {
         // 姓名
         self.contact.contactName = cell.textField.text;
     }else {
@@ -74,11 +74,30 @@
     }
 }
 
+- (void)clickedContactDoneHandler {
+    if (self.contact.contactName.length == 0) {
+        [[HYProgressHelper sharedInstance] showToast:@"联系人姓名不能为空"];
+        return;
+    }
+    if (self.contact.contactPhone.length == 0) {
+#pragma mark - TODO(添加手机号校验)
+        [[HYProgressHelper sharedInstance] showToast:@"联系人手机号不能为空"];
+        return;
+    }
+    @weakify(self)
+    [[RLMRealm defaultRealm] transactionWithBlock:^{
+        @strongify(self)
+        [[RLMRealm defaultRealm] addOrUpdateObject:self.contact];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
 #pragma mark - setter and getter
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
         _tableView.scrollEnabled = NO;
+        _tableView.separatorInset = UIEdgeInsetsZero;
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }
@@ -90,13 +109,6 @@
         _titleArray = @[@"姓名", @"手机号"];
     }
     return _titleArray;
-}
-
-- (NSArray *)introArray {
-    if (!_introArray) {
-        _introArray = @[@"请输入姓名", @"请输入手机号"];
-    }
-    return _introArray;
 }
 
 - (Contact *)contact {

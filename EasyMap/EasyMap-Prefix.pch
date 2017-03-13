@@ -17,6 +17,7 @@
 #import "Masonry.h"
 #import <CoreLocation/CoreLocation.h>
 #import "HYProgressHelper.h"
+#import "UIResponder+Router.h"
 
 /**
  Synthsize a weak or strong reference.

@@ -9,12 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @class HYContactAddCell;
-@protocol HYContactAddCellDelegate <NSObject>
-
-@optional
-- (void)handleTextFieldChanged:(HYContactAddCell *)cell;
-
-@end
 
 @interface HYContactAddCell : UITableViewCell
 
@@ -27,12 +21,5 @@
 @property (strong, nonatomic) UITextField *textField;
 
 @property (strong, nonatomic) UILabel *titleLabel;
-
-@property (weak, nonatomic) id<HYContactAddCellDelegate> delegate;
-
-@property (copy, nonatomic) NSString *title;
-
-@property (copy, nonatomic) NSString *cellPlaceHolder;
-
 
 @end

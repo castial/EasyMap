@@ -27,6 +27,12 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickedAddContactHandler)];
     
     [self.view addSubview:self.tableView];
+}
+
+#pragma mark - 使用这个方法更新可能有问题，暂时先这样
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     [self fetchContacts];
 }
 
@@ -58,10 +64,7 @@
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section {
-    if (self.dataArray.count == 0) {
-        return 0.1f;
-    }
-    return 10;
+    return 0.1f;
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section {
@@ -73,7 +76,10 @@
     
     Contact *contact = [self.dataArray objectAtIndex:indexPath.row];
     // 修改选中状态, 更新UI
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:YES];
+    [[RLMRealm defaultRealm] transactionWithBlock:^{
+        [[RLMRealm defaultRealm] addOrUpdateObject:contact];
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:YES];
+    }];
 }
 
 #pragma mark - Events

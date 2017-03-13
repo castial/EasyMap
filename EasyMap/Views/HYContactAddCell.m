@@ -49,7 +49,7 @@ static CGFloat const HYContactAddCell_Height = 44;
     }];
     
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mas_left).offset(10);
+        make.left.equalTo(self.titleLabel.mas_right).offset(10);
         make.top.bottom.equalTo(self);
         make.right.equalTo(self.mas_right).offset(-10);
     }];
@@ -57,9 +57,7 @@ static CGFloat const HYContactAddCell_Height = 44;
 
 #pragma mark - Events
 - (void)textFieldDidChanged {
-    if ([self.delegate respondsToSelector:@selector(handleTextFieldChanged:)]) {
-        [self.delegate handleTextFieldChanged:self];
-    }
+    [self hy_routerEventWithName:HYControlEventEdingingChanged userInfo:self];
 }
 
 #pragma mark - setter and getter
@@ -67,7 +65,7 @@ static CGFloat const HYContactAddCell_Height = 44;
     if (!_textField) {
         _textField = [[UITextField alloc] init];
         _textField.font = [UIFont systemFontOfSize:14.0f];
-        [_textField addTarget:self action:@selector(textFieldDidChanged) forControlEvents:UIControlEventValueChanged];
+        [_textField addTarget:self action:@selector(textFieldDidChanged) forControlEvents:UIControlEventEditingChanged];
     }
     return _textField;
 }
@@ -78,14 +76,6 @@ static CGFloat const HYContactAddCell_Height = 44;
         _titleLabel.font = [UIFont systemFontOfSize:14.0f];
     }
     return _titleLabel;
-}
-
-- (void)setCellPlaceHolder:(NSString *)cellPlaceHolder {
-    _cellPlaceHolder = cellPlaceHolder;
-    
-    if (cellPlaceHolder) {
-        self.textField.placeholder = cellPlaceHolder;
-    }
 }
 
 @end

@@ -13,7 +13,7 @@
 
 typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
 
-@interface HYLocationMainController ()<HYLocateViewDelegate, CLLocationManagerDelegate, MFMessageComposeViewControllerDelegate>
+@interface HYLocationMainController ()<CLLocationManagerDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (strong, nonatomic) HYLocateView *locateView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -44,30 +44,6 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
     // 加上导航栏横线
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:nil];
-}
-
-#pragma mark - HYLocateViewDelegate
-- (void)didSelectLocateEvent:(HYLocateEventType)eventType {
-    switch (eventType) {
-        case HYLocateEventLocate:{
-            // 开始定位
-            if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-                [self.locationManager requestAlwaysAuthorization];
-            }
-            [self.locationManager startUpdatingLocation];
-            [self.locateView startLocateAnimation];
-            break;
-        }
-            
-        case HYLocateEventContact:{
-            HYContactGroupController *groupVC = [[HYContactGroupController alloc] init];
-            [self.navigationController pushViewController:groupVC animated:YES];
-            break;
-        }
-            
-        default:
-            break;
-    }
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -109,6 +85,31 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
     }
 }
 
+#pragma mark - Events
+- (void)hy_routerEventWithName:(HYControlEvent)eventName userInfo:(NSObject *)userInfo {
+    HYLocateEventType eventType = (HYLocateEventType)[(NSNumber *)userInfo integerValue];
+    switch (eventType) {
+        case HYLocateEventLocate:{
+            // 开始定位
+            if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+                [self.locationManager requestAlwaysAuthorization];
+            }
+            [self.locationManager startUpdatingLocation];
+            [self.locateView startLocateAnimation];
+            break;
+        }
+            
+        case HYLocateEventContact:{
+            HYContactGroupController *groupVC = [[HYContactGroupController alloc] init];
+            [self.navigationController pushViewController:groupVC animated:YES];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark - Private Methods
 // 根据经纬度获取当前位置详细信息
 - (void)geocodeLocationWithLocation:(CLLocation *)location completionHandler:(HYGeocodeCompletionHandler)completionHandler {
@@ -141,7 +142,6 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
 - (HYLocateView *)locateView {
     if (!_locateView) {
         _locateView = [[HYLocateView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        _locateView.delegate = self;
     }
     return _locateView;
 }
