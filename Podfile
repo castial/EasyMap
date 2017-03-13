@@ -9,4 +9,5 @@ target 'EasyMap' do
   pod 'Masonry'
   pod 'MBProgressHUD'
   pod 'Realm'
+  pod 'IQKeyboardManager'
 end

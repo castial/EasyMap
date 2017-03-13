@@ -1,4 +1,5 @@
 PODS:
+  - IQKeyboardManager (4.0.8)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - Realm (2.3.0):
@@ -6,15 +7,17 @@ PODS:
   - Realm/Headers (2.3.0)
 
 DEPENDENCIES:
+  - IQKeyboardManager
   - Masonry
   - MBProgressHUD
   - Realm
 
 SPEC CHECKSUMS:
+  IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Realm: 69d7de9aa569a11eed490aaabc8f2109e3985ecf
 
-PODFILE CHECKSUM: cad0cacc5e6fcea8f8952d23c26960260f51f6f7
+PODFILE CHECKSUM: e126d87b0870f3a10baca98e9c346f9e7c9e75a4
 
 COCOAPODS: 1.2.0.rc.1

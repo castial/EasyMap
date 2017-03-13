@@ -26,6 +26,7 @@
 		6888197C1E6EAC7A0015FDB3 /* HYTrackMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888197B1E6EAC7A0015FDB3 /* HYTrackMainViewController.m */; };
 		6888197F1E6EAD450015FDB3 /* HYAccountMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888197E1E6EAD450015FDB3 /* HYAccountMainController.m */; };
 		688819821E6EB0BD0015FDB3 /* HYTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819811E6EB0BD0015FDB3 /* HYTabBarController.m */; };
+		68885FE01E76730400A9A237 /* UIResponder+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 68885FDF1E76730400A9A237 /* UIResponder+Router.m */; };
 		68A30F501E66A6D0009398C0 /* UIViewController+Present.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A30F4F1E66A6D0009398C0 /* UIViewController+Present.m */; };
 		68BB50E71E6FF587005FC78E /* HYLocateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB50E61E6FF587005FC78E /* HYLocateView.m */; };
 		68E65BE41E70EE8B002CCB1E /* HYProgressHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E65BE31E70EE8B002CCB1E /* HYProgressHelper.m */; };
@@ -72,6 +73,8 @@
 		6888197E1E6EAD450015FDB3 /* HYAccountMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYAccountMainController.m; sourceTree = "<group>"; };
 		688819801E6EB0BD0015FDB3 /* HYTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTabBarController.h; sourceTree = "<group>"; };
 		688819811E6EB0BD0015FDB3 /* HYTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTabBarController.m; sourceTree = "<group>"; };
+		68885FDE1E76730400A9A237 /* UIResponder+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIResponder+Router.h"; path = "Expand/Category/UIResponder+Router.h"; sourceTree = "<group>"; };
+		68885FDF1E76730400A9A237 /* UIResponder+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIResponder+Router.m"; path = "Expand/Category/UIResponder+Router.m"; sourceTree = "<group>"; };
 		68A30F4E1E66A6D0009398C0 /* UIViewController+Present.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Present.h"; path = "Expand/Category/UIViewController+Present.h"; sourceTree = "<group>"; };
 		68A30F4F1E66A6D0009398C0 /* UIViewController+Present.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Present.m"; path = "Expand/Category/UIViewController+Present.m"; sourceTree = "<group>"; };
 		68BB50E51E6FF587005FC78E /* HYLocateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYLocateView.h; path = Views/HYLocateView.h; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				68E65BE61E712110002CCB1E /* UIImage+Utils.m */,
 				68204B821E72AFE2002B7EEE /* UITableView+EmptyData.h */,
 				68204B831E72AFE2002B7EEE /* UITableView+EmptyData.m */,
+				68885FDE1E76730400A9A237 /* UIResponder+Router.h */,
+				68885FDF1E76730400A9A237 /* UIResponder+Router.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 				68321D8B1E5EB86C002A6F3F /* main.m in Sources */,
 				688819821E6EB0BD0015FDB3 /* HYTabBarController.m in Sources */,
 				68204B7B1E72788D002B7EEE /* Contact.m in Sources */,
+				68885FE01E76730400A9A237 /* UIResponder+Router.m in Sources */,
 				68E65BE41E70EE8B002CCB1E /* HYProgressHelper.m in Sources */,
 				68E65BE71E712110002CCB1E /* UIImage+Utils.m in Sources */,
 				681D6EB41E6D5B2A00243277 /* HYNavigationController.m in Sources */,
