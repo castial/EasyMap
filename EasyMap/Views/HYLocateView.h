@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+// 定位页面点击事件类型
+typedef NS_ENUM(NSUInteger, HYLocateEventType) {
+    HYLocateEventLocate = 0,    // 点击定位事件
+    HYLocateEventContact,       // 点击紧急联系人事件
+};
+
 @protocol HYLocateViewDelegate <NSObject>
 
 @optional
-- (void)didSelectLocateBtn;
+- (void)didSelectLocateEvent:(HYLocateEventType)eventType;
 
 @end
 

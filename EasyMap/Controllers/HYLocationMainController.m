@@ -9,6 +9,7 @@
 #import "HYLocationMainController.h"
 #import "HYLocateView.h"
 #import <MessageUI/MessageUI.h>
+#import "HYContactGroupController.h"
 
 typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
 
@@ -46,14 +47,27 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
 }
 
 #pragma mark - HYLocateViewDelegate
-- (void)didSelectLocateBtn {
-    // 开始定位
-    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-        [self.locationManager requestAlwaysAuthorization];
+- (void)didSelectLocateEvent:(HYLocateEventType)eventType {
+    switch (eventType) {
+        case HYLocateEventLocate:{
+            // 开始定位
+            if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+                [self.locationManager requestAlwaysAuthorization];
+            }
+            [self.locationManager startUpdatingLocation];
+            [self.locateView startLocateAnimation];
+            break;
+        }
+            
+        case HYLocateEventContact:{
+            HYContactGroupController *groupVC = [[HYContactGroupController alloc] init];
+            [self.navigationController pushViewController:groupVC animated:YES];
+            break;
+        }
+            
+        default:
+            break;
     }
-    [self.locationManager startUpdatingLocation];
-    [[HYProgressHelper sharedInstance] showLoading:@"开始定位"];
-    [self.locateView startLocateAnimation];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -61,9 +75,10 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
     CLLocation *location = [locations lastObject];
     CLLocationCoordinate2D coordinate = location.coordinate;
     NSLog(@"经度：%f, 纬度: %f", coordinate.longitude, coordinate.latitude);
+    @weakify(self)
     [self geocodeLocationWithLocation:location completionHandler:^(NSString *placeInfo) {
+        @strongify(self)
         NSLog(@"当前位置: %@", placeInfo);
-        [[HYProgressHelper sharedInstance] hideLoading];
         [self.locateView endLocateAnimation];
         [self showMessageController:placeInfo];
     }];
@@ -83,6 +98,7 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
     [controller dismissViewControllerAnimated:YES completion:nil];
     if (result == MessageComposeResultSent) {
         // 发送成功
+        NSLog(@"发送短信的联系人: %@", controller.recipients);
         [[HYProgressHelper sharedInstance] showToast:@"短信发送成功"];
     }else if (result == MessageComposeResultCancelled) {
         // 取消发送

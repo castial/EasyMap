@@ -37,4 +37,9 @@
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
 }
 
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [viewController setHidesBottomBarWhenPushed:YES];
+    [super pushViewController:viewController animated:animated];
+}
+
 @end

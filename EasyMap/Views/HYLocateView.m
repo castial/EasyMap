@@ -7,15 +7,15 @@
 //
 
 #import "HYLocateView.h"
-#import "UIImage+Utils.h"
 
 @interface HYLocateView()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UIView *locateHeaderView;
 @property (strong, nonatomic) UIButton *locateBtn;
 @property (strong, nonatomic) UITableView *tableView;
-
 @property (strong, nonatomic) CAShapeLayer *shapeLayer;
+
+@property (copy, nonatomic) NSArray *dataArray;
 
 @end
 
@@ -78,7 +78,7 @@
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -89,8 +89,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+        cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0f];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = @"使用说明";
+    cell.textLabel.text = [self.dataArray objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -105,12 +108,32 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    switch (indexPath.row) {
+        case 0:{
+            break;
+        }
+            
+        case 1:{
+            if ([self.delegate respondsToSelector:@selector(didSelectLocateEvent:)]) {
+                [self.delegate didSelectLocateEvent:HYLocateEventContact];
+            }
+            break;
+        }
+            
+        case 2:{
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - Events
 - (void)clickedLocateBtnHandler {
-    if ([self.delegate respondsToSelector:@selector(didSelectLocateBtn)]) {
-        [self.delegate didSelectLocateBtn];
+    if ([self.delegate respondsToSelector:@selector(didSelectLocateEvent:)]) {
+        [self.delegate didSelectLocateEvent:HYLocateEventLocate];
     }
 }
 
@@ -159,6 +182,13 @@
         _shapeLayer.strokeEnd = 1;
     }
     return _shapeLayer;
+}
+
+- (NSArray *)dataArray {
+    if (!_dataArray) {
+        _dataArray = @[@"功能介绍", @"紧急联系人(仅限短信方式)", @"使用须知"];
+    }
+    return _dataArray;
 }
 
 @end
