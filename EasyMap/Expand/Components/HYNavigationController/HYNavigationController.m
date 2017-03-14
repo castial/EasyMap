@@ -24,7 +24,7 @@
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: navTitleColor, NSFontAttributeName:navTitleFont}];
     [[UINavigationBar appearance] setTintColor:navTitleColor];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:58.0/255.0 green:155.0/255.0 blue:252.0/255.0 alpha:1.0f]];
+    [[UINavigationBar appearance] setBarTintColor:HY_Tint_Color];
     [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"btn_back@3x.png"]];
     [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"btn_back@3x.png"]];
     
@@ -38,7 +38,9 @@
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    [viewController setHidesBottomBarWhenPushed:YES];
+    if (self.viewControllers.count > 0) {
+        viewController.hidesBottomBarWhenPushed = YES;
+    }
     [super pushViewController:viewController animated:animated];
 }
 

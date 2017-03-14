@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define HYContactAddEditingChanged @"HYContactAddEditingChanged"    // 文本框内容改变
+
 @class HYContactAddCell;
 
 @interface HYContactAddCell : UITableViewCell

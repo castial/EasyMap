@@ -16,6 +16,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     self.window.rootViewController = [[HYTabBarController alloc] init];
     

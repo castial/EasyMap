@@ -62,7 +62,7 @@
 }
 
 #pragma mark - Events
-- (void)hy_routerEventWithName:(HYControlEvent)eventName userInfo:(NSObject *)userInfo {
+- (void)routerEventWithName:(NSString *)eventName userInfo:(NSObject *)userInfo {
     HYContactAddCell *cell = (HYContactAddCell *)userInfo;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     if (indexPath.row == 0) {

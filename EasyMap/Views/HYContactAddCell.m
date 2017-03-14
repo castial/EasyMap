@@ -57,7 +57,7 @@ static CGFloat const HYContactAddCell_Height = 44;
 
 #pragma mark - Events
 - (void)textFieldDidChanged {
-    [self hy_routerEventWithName:HYControlEventEdingingChanged userInfo:self];
+    [self routerEventWithName:HYContactAddEditingChanged userInfo:self];
 }
 
 #pragma mark - setter and getter

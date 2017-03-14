@@ -10,8 +10,9 @@
 
 @implementation UIResponder (Router)
 
-- (void)hy_routerEventWithName:(HYControlEvent)eventName userInfo:(NSObject *)userInfo {
-    [[self nextResponder] hy_routerEventWithName:eventName userInfo:userInfo];
+- (void)routerEventWithName:(NSString *)eventName userInfo:(NSObject *)userInfo
+{
+    [[self nextResponder] routerEventWithName:eventName userInfo:userInfo];
 }
 
 @end

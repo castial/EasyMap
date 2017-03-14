@@ -16,6 +16,7 @@
 /*****************Base Components*****************/
 #import "Masonry.h"
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 #import "HYProgressHelper.h"
 #import "UIResponder+Router.h"
 
@@ -68,5 +69,10 @@
 #define SCREEN_SIZE                 [[UIScreen mainScreen] bounds].size
 #define SCREEN_WIDTH                [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT               [[UIScreen mainScreen] bounds].size.height
+#define STATUS_BAR_HEIGHT               20
+#define NAVIGATION_BAR_HEIGHT           44
+#define TAB_BAR_HEIGHT                  49
+// Color
+#define HY_Tint_Color [UIColor colorWithRed:58.0/255.0 green:155.0/255.0 blue:252.0/255.0 alpha:1.0f]   // 系统主流颜色
 
 #endif /* EasyMap_Prefix_pch */

@@ -115,7 +115,7 @@
         }
             
         case 1:{
-            [self hy_routerEventWithName:HYControlEventTouchUpInside userInfo:[NSNumber numberWithInteger:HYLocateEventContact]];
+            [self routerEventWithName:HYLocateEventContact userInfo:nil];
             break;
         }
             
@@ -130,7 +130,7 @@
 
 #pragma mark - Events
 - (void)clickedLocateBtnHandler {
-    [self hy_routerEventWithName:HYControlEventTouchUpInside userInfo:[NSNumber numberWithInteger:HYLocateEventLocate]];
+    [self routerEventWithName:HYLocateEventLocate userInfo:nil];
 }
 
 #pragma mark - setter and getter
@@ -155,7 +155,7 @@
 - (UIView *)locateHeaderView {
     if (!_locateHeaderView) {
         _locateHeaderView = [[UIView alloc] init];
-        _locateHeaderView.backgroundColor = [UIColor colorWithRed:58.0/255.0 green:155.0/255.0 blue:252.0/255.0 alpha:1.0f];
+        _locateHeaderView.backgroundColor = HY_Tint_Color;
     }
     return _locateHeaderView;
 }

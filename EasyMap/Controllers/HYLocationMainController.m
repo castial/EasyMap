@@ -86,27 +86,19 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
 }
 
 #pragma mark - Events
-- (void)hy_routerEventWithName:(HYControlEvent)eventName userInfo:(NSObject *)userInfo {
-    HYLocateEventType eventType = (HYLocateEventType)[(NSNumber *)userInfo integerValue];
-    switch (eventType) {
-        case HYLocateEventLocate:{
-            // 开始定位
-            if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-                [self.locationManager requestAlwaysAuthorization];
-            }
-            [self.locationManager startUpdatingLocation];
-            [self.locateView startLocateAnimation];
-            break;
+- (void)routerEventWithName:(NSString *)eventName userInfo:(NSObject *)userInfo {
+    if ([eventName isEqualToString:HYLocateEventLocate]) {
+        // 开始定位
+        if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+            [self.locationManager requestAlwaysAuthorization];
         }
-            
-        case HYLocateEventContact:{
-            HYContactGroupController *groupVC = [[HYContactGroupController alloc] init];
-            [self.navigationController pushViewController:groupVC animated:YES];
-            break;
-        }
-            
-        default:
-            break;
+        [self.locationManager startUpdatingLocation];
+        [self.locateView startLocateAnimation];
+    }else if ([eventName isEqualToString:HYLocateEventContact]) {
+        HYContactGroupController *groupVC = [[HYContactGroupController alloc] init];
+        [self.navigationController pushViewController:groupVC animated:YES];
+    }else {
+        [super routerEventWithName:eventName userInfo:userInfo];
     }
 }
 
