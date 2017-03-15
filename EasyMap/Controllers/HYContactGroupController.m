@@ -53,7 +53,7 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     }
     Contact *contact = [self.dataArray objectAtIndex:indexPath.row];
     cell.textLabel.text = contact.contactName;
@@ -77,8 +77,9 @@
     Contact *contact = [self.dataArray objectAtIndex:indexPath.row];
     // 修改选中状态, 更新UI
     [[RLMRealm defaultRealm] transactionWithBlock:^{
+        contact.isSelected = !contact.isSelected;
         [[RLMRealm defaultRealm] addOrUpdateObject:contact];
-        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:YES];
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:NO];
     }];
 }
 

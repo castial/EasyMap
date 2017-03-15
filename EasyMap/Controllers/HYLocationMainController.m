@@ -10,6 +10,8 @@
 #import "HYLocateView.h"
 #import <MessageUI/MessageUI.h>
 #import "HYContactGroupController.h"
+#import "HYLocationConverter.h"
+#import "Contact.h"
 
 typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
 
@@ -49,12 +51,12 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
 #pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     CLLocation *location = [locations lastObject];
-    CLLocationCoordinate2D coordinate = location.coordinate;
-    NSLog(@"经度：%f, 纬度: %f", coordinate.longitude, coordinate.latitude);
+//    CLLocationCoordinate2D coordinate = [HYLocationConverter wgs84ToGcj02:location.coordinate];
+
     @weakify(self)
     [self geocodeLocationWithLocation:location completionHandler:^(NSString *placeInfo) {
         @strongify(self)
-        NSLog(@"当前位置: %@", placeInfo);
+
         [self.locateView endLocateAnimation];
         [self showMessageController:placeInfo];
     }];
@@ -120,7 +122,13 @@ typedef void(^HYGeocodeCompletionHandler)(NSString *placeInfo);
     if ([MFMessageComposeViewController canSendText]) {
         MFMessageComposeViewController *messageVC = [[MFMessageComposeViewController alloc] init];
         // 如果本地有紧急联系人的话，填写联系人手机号
-        messageVC.recipients = @[@"17607557133"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isSelected = YES"];
+        RLMResults *results = [Contact objectsWithPredicate:predicate];
+        NSMutableArray *recipients = [NSMutableArray array];
+        for (Contact *contact in results) {
+            [recipients addObject:contact.contactPhone];
+        }
+        messageVC.recipients = recipients;
         messageVC.body = message;
         messageVC.messageComposeDelegate = self;
         [self presentViewController:messageVC animated:YES completion:nil];
