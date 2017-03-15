@@ -46,8 +46,17 @@
     [self.trackBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.mas_centerX);
         make.bottom.equalTo(self.mas_bottom).offset(-10);
-        make.size.mas_equalTo(CGSizeMake(100, 60));
+        make.size.mas_equalTo(CGSizeMake(120, 80));
     }];
+}
+
+#pragma mark - Events
+- (void)clickedLocateBtnHandler {
+    [self routerEventWithName:HYTrackEventLocate userInfo:nil];
+}
+
+- (void)clickedTrackBtnHandler {
+    [self routerEventWithName:HYTrackEventTrack userInfo:nil];
 }
 
 #pragma mark - setter and getter
@@ -68,6 +77,7 @@
         _locateBtn.backgroundColor = [UIColor whiteColor];
         _locateBtn.layer.cornerRadius = CGRectGetHeight(_locateBtn.frame) / 2;
         _locateBtn.layer.masksToBounds = YES;
+        [_locateBtn addTarget:self action:@selector(clickedLocateBtnHandler) forControlEvents:UIControlEventTouchUpInside];
     }
     return _locateBtn;
 }
@@ -78,6 +88,7 @@
         _trackBtn.backgroundColor = [UIColor whiteColor];
         _trackBtn.layer.cornerRadius = 5;
         _trackBtn.layer.masksToBounds = YES;
+        [_trackBtn addTarget:self action:@selector(clickedTrackBtnHandler) forControlEvents:UIControlEventTouchUpInside];
     }
     return _trackBtn;
 }

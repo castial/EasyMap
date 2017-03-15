@@ -9,6 +9,7 @@
 #import "HYContactAddController.h"
 #import "HYContactAddCell.h"
 #import "Contact.h"
+#import "HYValidateHelper.h"
 
 @interface HYContactAddController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -80,7 +81,10 @@
         return;
     }
     if (self.contact.contactPhone.length == 0) {
-#pragma mark - TODO(添加手机号校验)
+        if (![HYValidateHelper validatePhoneNumber:self.contact.contactPhone]) {
+            [[HYProgressHelper sharedInstance] showToast:@"请输入正确的手机号格式"];
+            return;
+        }
         [[HYProgressHelper sharedInstance] showToast:@"联系人手机号不能为空"];
         return;
     }
