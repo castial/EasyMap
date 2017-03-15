@@ -23,6 +23,7 @@
 		68321DA31E5EB8E4002A6F3F /* HYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */; };
 		686538351E78DF79002F017E /* HYValidateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 686538341E78DF79002F017E /* HYValidateHelper.m */; };
 		686538391E793992002F017E /* HYLocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 686538381E793992002F017E /* HYLocationConverter.m */; };
+		6865383C1E795750002F017E /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 6865383B1E795750002F017E /* Track.m */; };
 		687D43391E7799FF003449BE /* HYTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 687D43381E7799FF003449BE /* HYTrackView.m */; };
 		688819761E6EA9890015FDB3 /* HYNavSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819751E6EA9890015FDB3 /* HYNavSearchBar.m */; };
 		688819791E6EABFD0015FDB3 /* HYLocationMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819781E6EABFD0015FDB3 /* HYLocationMainController.m */; };
@@ -69,6 +70,8 @@
 		686538341E78DF79002F017E /* HYValidateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYValidateHelper.m; path = Expand/Utils/HYValidateHelper/HYValidateHelper.m; sourceTree = "<group>"; };
 		686538371E793992002F017E /* HYLocationConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYLocationConverter.h; path = Expand/Components/HYLocationConverter/HYLocationConverter.h; sourceTree = "<group>"; };
 		686538381E793992002F017E /* HYLocationConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYLocationConverter.m; path = Expand/Components/HYLocationConverter/HYLocationConverter.m; sourceTree = "<group>"; };
+		6865383A1E795750002F017E /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Model/Track.h; sourceTree = "<group>"; };
+		6865383B1E795750002F017E /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Track.m; path = Model/Track.m; sourceTree = "<group>"; };
 		68662C4C1E5ED3AD0067A662 /* EasyMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyMap-Prefix.pch"; sourceTree = "<group>"; };
 		687D43371E7799FF003449BE /* HYTrackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYTrackView.h; path = Views/HYTrackView.h; sourceTree = "<group>"; };
 		687D43381E7799FF003449BE /* HYTrackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYTrackView.m; path = Views/HYTrackView.m; sourceTree = "<group>"; };
@@ -202,6 +205,8 @@
 			children = (
 				68204B791E72788D002B7EEE /* Contact.h */,
 				68204B7A1E72788D002B7EEE /* Contact.m */,
+				6865383A1E795750002F017E /* Track.h */,
+				6865383B1E795750002F017E /* Track.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				686538391E793992002F017E /* HYLocationConverter.m in Sources */,
 				68204B7B1E72788D002B7EEE /* Contact.m in Sources */,
 				68885FE01E76730400A9A237 /* UIResponder+Router.m in Sources */,
+				6865383C1E795750002F017E /* Track.m in Sources */,
 				68E65BE41E70EE8B002CCB1E /* HYProgressHelper.m in Sources */,
 				68E65BE71E712110002CCB1E /* UIImage+Utils.m in Sources */,
 				681D6EB41E6D5B2A00243277 /* HYNavigationController.m in Sources */,

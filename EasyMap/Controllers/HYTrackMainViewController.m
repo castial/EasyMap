@@ -27,6 +27,7 @@
     self.title = @"轨迹";
     [self.view addSubview:self.trackView];
     
+    self.trackView.mapView.delegate = self;
     [self.locationManager startUpdatingLocation];
 }
 
@@ -48,15 +49,29 @@
     self.navigationController.navigationBar.hidden = NO;
 }
 
+#pragma mark - MKMapViewDelegate
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+    MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithCircle:overlay];
+    circleRenderer.fillColor = [UIColor redColor];
+    circleRenderer.strokeColor = HY_Tint_Color;
+    circleRenderer.alpha = 0.2;
+    
+    return circleRenderer;
+}
+
 #pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
     CLLocation *location = [locations lastObject];
     CLLocationCoordinate2D coordinate = [HYLocationConverter wgs84ToGcj02:location.coordinate];
 
     MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(coordinate, 2000, 2000);
-    
+
     [self.trackView.mapView setRegion:newRegion animated:YES];
     [self.locationManager stopUpdatingLocation];
+    
+    // 测试添加覆盖物
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:100];
+    [self.trackView.mapView addOverlay:circle];
 }
 
 #pragma mark - Events
