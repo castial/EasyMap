@@ -9,13 +9,21 @@
 #import <Realm/Realm.h>
 
 @interface Track : RLMObject
-
+/**
+ 经度
+ */
 @property (copy, nonatomic) NSString *longitude;
-
+/**
+ 纬度
+ */
 @property (copy, nonatomic) NSString *latitude;
-
+/**
+ 速度
+ */
 @property (copy, nonatomic) NSString *speed;
-
+/**
+ 当前时间
+ */
 @property (strong, nonatomic) NSDate *currentDate;
 
 @end

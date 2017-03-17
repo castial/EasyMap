@@ -16,7 +16,7 @@
 /*****************Base Components*****************/
 #import "Masonry.h"
 #import <CoreLocation/CoreLocation.h>
-#import <MapKit/MapKit.h>
+#import <CoreMotion/CoreMotion.h>
 #import "HYProgressHelper.h"
 #import "UIResponder+Router.h"
 

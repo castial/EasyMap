@@ -10,9 +10,6 @@
 
 @interface HYTrackView()
 
-@property (strong, nonatomic) UIButton *locateBtn;
-@property (strong, nonatomic) UIButton *trackBtn;
-
 @end
 
 @implementation HYTrackView
@@ -29,68 +26,29 @@
 
 #pragma mark - init UI and Layout
 - (void)initUI {
-    [self addSubview:self.mapView];
-    [self addSubview:self.locateBtn];
-    [self addSubview:self.trackBtn];
+    [self addSubview:self.stepCountLabel];
 }
 
 - (void)initLayout {
-    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.bottom.equalTo(self);
-    }];
-    [self.locateBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.stepCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left).offset(20);
-        make.bottom.equalTo(self.mas_bottom).offset(-10);
-        make.size.mas_equalTo(CGSizeMake(40, 40));
-    }];
-    [self.trackBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.mas_centerX);
-        make.bottom.equalTo(self.mas_bottom).offset(-10);
-        make.size.mas_equalTo(CGSizeMake(120, 80));
+        make.top.equalTo(self.mas_top).offset(50);
+        make.size.mas_equalTo(CGSizeMake(120, 50));
     }];
 }
 
 #pragma mark - Events
-- (void)clickedLocateBtnHandler {
-    [self routerEventWithName:HYTrackEventLocate userInfo:nil];
-}
 
-- (void)clickedTrackBtnHandler {
-    [self routerEventWithName:HYTrackEventTrack userInfo:nil];
-}
 
 #pragma mark - setter and getter
-- (MKMapView *)mapView {
-    if (!_mapView) {
-        _mapView = [[MKMapView alloc] init];
-        _mapView.showsUserLocation = YES;   // 显示用户位置
-        _mapView.showsBuildings = YES;      // 显示建筑
-        _mapView.showsCompass = YES;        // 显示指南针
-        _mapView.userTrackingMode = MKUserTrackingModeFollow;   // 跟踪用户的移动
+- (UILabel *)stepCountLabel {
+    if (!_stepCountLabel) {
+        _stepCountLabel = [UILabel new];
+        _stepCountLabel.font = [UIFont systemFontOfSize:14.0f];
+        _stepCountLabel.textAlignment = NSTextAlignmentCenter;
+        _stepCountLabel.textColor = [UIColor redColor];
     }
-    return _mapView;
-}
-
-- (UIButton *)locateBtn {
-    if (!_locateBtn) {
-        _locateBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-        _locateBtn.backgroundColor = [UIColor whiteColor];
-        _locateBtn.layer.cornerRadius = CGRectGetHeight(_locateBtn.frame) / 2;
-        _locateBtn.layer.masksToBounds = YES;
-        [_locateBtn addTarget:self action:@selector(clickedLocateBtnHandler) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _locateBtn;
-}
-
-- (UIButton *)trackBtn {
-    if (!_trackBtn) {
-        _trackBtn = [[UIButton alloc] init];
-        _trackBtn.backgroundColor = [UIColor whiteColor];
-        _trackBtn.layer.cornerRadius = 5;
-        _trackBtn.layer.masksToBounds = YES;
-        [_trackBtn addTarget:self action:@selector(clickedTrackBtnHandler) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _trackBtn;
+    return _stepCountLabel;
 }
 
 @end

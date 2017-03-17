@@ -8,13 +8,12 @@
 
 #import "HYTrackMainViewController.h"
 #import "HYTrackView.h"
-#import "HYLocationConverter.h"
 
-@interface HYTrackMainViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
+@interface HYTrackMainViewController ()
 
-@property (strong, nonatomic) HYTrackView *trackView;
+@property (nonatomic, strong) HYTrackView *trackView;
 
-@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic, strong) CMPedometer *pedometer;
 
 @end
 
@@ -26,64 +25,32 @@
     
     self.title = @"轨迹";
     [self.view addSubview:self.trackView];
-    
-    self.trackView.mapView.delegate = self;
-    [self.locationManager startUpdatingLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    // 修改状态栏字体颜色
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    // 隐藏导航栏
-    self.navigationController.navigationBar.hidden = YES;
+    if ([CMPedometer isStepCountingAvailable]) {
+        NSDate *toDate = [NSDate date];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *fromDate = [dateFormatter dateFromString:[dateFormatter stringFromDate:toDate]];
+        [self.pedometer startPedometerUpdatesFromDate:fromDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
+            if (!pedometerData.numberOfSteps) {
+                self.trackView.stepCountLabel.text = @"0";
+            }else {
+                self.trackView.stepCountLabel.text = [NSString stringWithFormat:@"%@", pedometerData.numberOfSteps];
+            }
+        }];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    // 取消设置状态栏字体颜色
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    // 取消隐藏导航栏
-    self.navigationController.navigationBar.hidden = NO;
-}
-
-#pragma mark - MKMapViewDelegate
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
-    MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithCircle:overlay];
-    circleRenderer.fillColor = [UIColor redColor];
-    circleRenderer.strokeColor = HY_Tint_Color;
-    circleRenderer.alpha = 0.2;
-    
-    return circleRenderer;
-}
-
-#pragma mark - CLLocationManagerDelegate
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
-    CLLocation *location = [locations lastObject];
-    CLLocationCoordinate2D coordinate = [HYLocationConverter wgs84ToGcj02:location.coordinate];
-
-    MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(coordinate, 2000, 2000);
-
-    [self.trackView.mapView setRegion:newRegion animated:YES];
-    [self.locationManager stopUpdatingLocation];
-    
-    // 测试添加覆盖物
-    MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:100];
-    [self.trackView.mapView addOverlay:circle];
+    [self.pedometer stopPedometerUpdates];
 }
 
 #pragma mark - Events
 - (void)routerEventWithName:(NSString *)eventName userInfo:(NSObject *)userInfo {
-    if ([eventName isEqualToString:HYTrackEventLocate]) {
-        // 定位事件
-        [self.locationManager startUpdatingLocation];
-    }else if ([eventName isEqualToString:HYTrackEventLocate]) {
-        // 追踪按钮
-    }else {
-        [super routerEventWithName:eventName userInfo:userInfo];
-    }
 }
 
 #pragma mark - setter and getter
@@ -94,13 +61,11 @@
     return _trackView;
 }
 
-- (CLLocationManager *)locationManager {
-    if (!_locationManager) {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+- (CMPedometer *)pedometer {
+    if (!_pedometer) {
+        _pedometer = [[CMPedometer alloc] init];
     }
-    return _locationManager;
+    return _pedometer;
 }
 
 @end

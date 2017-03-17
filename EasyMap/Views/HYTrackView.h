@@ -13,6 +13,6 @@
 
 @interface HYTrackView : UIView
 
-@property (strong, nonatomic) MKMapView *mapView;
+@property (strong, nonatomic) UILabel *stepCountLabel;
 
 @end

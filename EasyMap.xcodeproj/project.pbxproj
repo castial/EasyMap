@@ -33,6 +33,9 @@
 		68885FE01E76730400A9A237 /* UIResponder+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 68885FDF1E76730400A9A237 /* UIResponder+Router.m */; };
 		68A30F501E66A6D0009398C0 /* UIViewController+Present.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A30F4F1E66A6D0009398C0 /* UIViewController+Present.m */; };
 		68BB50E71E6FF587005FC78E /* HYLocateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB50E61E6FF587005FC78E /* HYLocateView.m */; };
+		68E2137A1E7A5BA7004F844F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E213791E7A5BA7004F844F /* MapKit.framework */; };
+		68E2137E1E7A613E004F844F /* HYCrumbPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2137D1E7A613E004F844F /* HYCrumbPath.m */; };
+		68E213811E7A6D39004F844F /* HYCrumbPathRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E213801E7A6D39004F844F /* HYCrumbPathRenderer.m */; };
 		68E65BE41E70EE8B002CCB1E /* HYProgressHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E65BE31E70EE8B002CCB1E /* HYProgressHelper.m */; };
 		68E65BE71E712110002CCB1E /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E65BE61E712110002CCB1E /* UIImage+Utils.m */; };
 		68E65BEA1E716DAB002CCB1E /* HYContactGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E65BE91E716DAB002CCB1E /* HYContactGroupController.m */; };
@@ -91,6 +94,11 @@
 		68A30F4F1E66A6D0009398C0 /* UIViewController+Present.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Present.m"; path = "Expand/Category/UIViewController+Present.m"; sourceTree = "<group>"; };
 		68BB50E51E6FF587005FC78E /* HYLocateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYLocateView.h; path = Views/HYLocateView.h; sourceTree = "<group>"; };
 		68BB50E61E6FF587005FC78E /* HYLocateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYLocateView.m; path = Views/HYLocateView.m; sourceTree = "<group>"; };
+		68E213791E7A5BA7004F844F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		68E2137C1E7A613E004F844F /* HYCrumbPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYCrumbPath.h; path = Expand/Utils/Overlay/HYCrumbPath.h; sourceTree = "<group>"; };
+		68E2137D1E7A613E004F844F /* HYCrumbPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYCrumbPath.m; path = Expand/Utils/Overlay/HYCrumbPath.m; sourceTree = "<group>"; };
+		68E2137F1E7A6D39004F844F /* HYCrumbPathRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYCrumbPathRenderer.h; path = Expand/Utils/Overlay/HYCrumbPathRenderer.h; sourceTree = "<group>"; };
+		68E213801E7A6D39004F844F /* HYCrumbPathRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYCrumbPathRenderer.m; path = Expand/Utils/Overlay/HYCrumbPathRenderer.m; sourceTree = "<group>"; };
 		68E65BE21E70EE8B002CCB1E /* HYProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYProgressHelper.h; path = Expand/Utils/HYProgressHelper/HYProgressHelper.h; sourceTree = "<group>"; };
 		68E65BE31E70EE8B002CCB1E /* HYProgressHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYProgressHelper.m; path = Expand/Utils/HYProgressHelper/HYProgressHelper.m; sourceTree = "<group>"; };
 		68E65BE51E712110002CCB1E /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Utils.h"; path = "Expand/Category/UIImage+Utils.h"; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E2137A1E7A5BA7004F844F /* MapKit.framework in Frameworks */,
 				AB8F33E23423D554A8C336D6 /* libPods-EasyMap.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,6 +134,7 @@
 		59C375681AA87FDDEBDC7907 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68E213791E7A5BA7004F844F /* MapKit.framework */,
 				D214ED617C83E2D915A4BA97 /* libPods-EasyMap.a */,
 			);
 			name = Frameworks;
@@ -307,6 +317,7 @@
 		6888196E1E6E9A730015FDB3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				68E2137B1E7A6114004F844F /* Overlay */,
 				686538321E78DF4D002F017E /* HYValidateHelper */,
 				68E65BE11E70EE30002CCB1E /* HYProgressHelper */,
 			);
@@ -321,6 +332,17 @@
 			);
 			name = HYNavSearchBar;
 			path = Expand/Components/HYNavSearchBar;
+			sourceTree = "<group>";
+		};
+		68E2137B1E7A6114004F844F /* Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				68E2137C1E7A613E004F844F /* HYCrumbPath.h */,
+				68E2137D1E7A613E004F844F /* HYCrumbPath.m */,
+				68E2137F1E7A6D39004F844F /* HYCrumbPathRenderer.h */,
+				68E213801E7A6D39004F844F /* HYCrumbPathRenderer.m */,
+			);
+			name = Overlay;
 			sourceTree = "<group>";
 		};
 		68E65BE11E70EE30002CCB1E /* HYProgressHelper */ = {
@@ -371,6 +393,9 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
 							};
 						};
 					};
@@ -462,11 +487,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6888197F1E6EAD450015FDB3 /* HYAccountMainController.m in Sources */,
+				68E2137E1E7A613E004F844F /* HYCrumbPath.m in Sources */,
 				682302D01E68221C00A178B8 /* HYSegmentControl.m in Sources */,
 				68204B7E1E728D77002B7EEE /* HYContactAddController.m in Sources */,
 				6820017A1E63FD62008C6A22 /* UIViewController+AOP.m in Sources */,
 				68E65BEA1E716DAB002CCB1E /* HYContactGroupController.m in Sources */,
 				688819761E6EA9890015FDB3 /* HYNavSearchBar.m in Sources */,
+				68E213811E7A6D39004F844F /* HYCrumbPathRenderer.m in Sources */,
 				682302CD1E68213200A178B8 /* HYViewPagerController.m in Sources */,
 				68BB50E71E6FF587005FC78E /* HYLocateView.m in Sources */,
 				68321D8B1E5EB86C002A6F3F /* main.m in Sources */,
