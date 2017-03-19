@@ -23,13 +23,13 @@
     
     // 定位
     HYLocationMainController *locateVC = [[HYLocationMainController alloc] init];
-    [self setupChildVC:locateVC title:@"定位" imageName:nil selectedImageName:nil];
+    [self setupChildVC:locateVC title:@"定位" imageName:@"locate" selectedImageName:@"locate_selected"];
     // 轨迹
     HYTrackMainViewController *trackVC = [[HYTrackMainViewController alloc] init];
-    [self setupChildVC:trackVC title:@"轨迹" imageName:nil selectedImageName:nil];
+    [self setupChildVC:trackVC title:@"轨迹" imageName:@"track" selectedImageName:@"track_selected"];
     // 我
     HYAccountMainController *accountVC = [[HYAccountMainController alloc] init];
-    [self setupChildVC:accountVC title:@"我" imageName:nil selectedImageName:nil];
+    [self setupChildVC:accountVC title:@"我" imageName:@"account" selectedImageName:@"account_selected"];
     
     // 修改TabBar效果
     [[UITabBar appearance] setTintColor:HY_Tint_Color];
