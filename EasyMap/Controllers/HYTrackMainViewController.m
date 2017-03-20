@@ -9,6 +9,9 @@
 #import "HYTrackMainViewController.h"
 #import "HYTrackView.h"
 
+// 一天时间
+static NSTimeInterval const kDayTimeInterval = 60 * 60 * 24;
+
 @interface HYTrackMainViewController ()
 
 @property (nonatomic, strong) HYTrackView *trackView;
@@ -25,32 +28,33 @@
     
     self.title = @"轨迹";
     [self.view addSubview:self.trackView];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     
-    if ([CMPedometer isStepCountingAvailable]) {
-        NSDate *toDate = [NSDate date];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSDate *fromDate = [dateFormatter dateFromString:[dateFormatter stringFromDate:toDate]];
-        [self.pedometer startPedometerUpdatesFromDate:fromDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
-            if (!pedometerData.numberOfSteps) {
-                self.trackView.stepCountLabel.text = @"0";
-            }else {
-                self.trackView.stepCountLabel.text = [NSString stringWithFormat:@"%@", pedometerData.numberOfSteps];
-            }
-        }];
-    }
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [self.pedometer stopPedometerUpdates];
+//    [self queryStepCount];
 }
 
 #pragma mark - Events
 - (void)routerEventWithName:(NSString *)eventName userInfo:(NSObject *)userInfo {
+}
+
+#pragma mark - Private Methods
+- (void)queryStepCount {
+    if ([CMPedometer isStepCountingAvailable]) {
+        NSDate *fromDate = [NSDate dateWithTimeIntervalSinceNow:-kDayTimeInterval];
+        [self.pedometer startPedometerUpdatesFromDate:fromDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
+            if (!error) {
+                NSLog(@"步数 = %@", pedometerData.numberOfSteps);
+                NSLog(@"距离 = %@", pedometerData.distance);
+                NSLog(@"上楼 = %@", pedometerData.floorsAscended);
+                NSLog(@"下楼 = %@", pedometerData.floorsDescended);
+                NSLog(@"速度/米 = %@", pedometerData.currentPace);
+                NSLog(@"速度/步 = %@", pedometerData.currentCadence);
+            }else {
+                [[HYProgressHelper sharedInstance] showToast:error.description];
+            }
+        }];
+    }else {
+        [[HYProgressHelper sharedInstance] showToast:@"记步功能不可用"];
+    }
 }
 
 #pragma mark - setter and getter
