@@ -138,6 +138,10 @@
     if (!_locateBtn) {
         _locateBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
         _locateBtn.layer.cornerRadius = 150 / 2;
+        [_locateBtn setImage:[UIImage imageNamed:@"locate_start"] forState:UIControlStateNormal];
+        [_locateBtn setImage:[UIImage imageNamed:@"locate_start"] forState:UIControlStateHighlighted];
+        _locateBtn.imageView.contentMode = UIControlContentHorizontalAlignmentFill;
+        [_locateBtn setImageEdgeInsets:UIEdgeInsetsMake(20, 20, 20, 20)];
         [_locateBtn addTarget:self action:@selector(clickedLocateBtnHandler) forControlEvents:UIControlEventTouchUpInside];
     }
     return _locateBtn;
