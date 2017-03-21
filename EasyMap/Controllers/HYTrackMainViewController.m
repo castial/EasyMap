@@ -29,7 +29,7 @@ static NSTimeInterval const kDayTimeInterval = 60 * 60 * 24;
     self.title = @"轨迹";
     [self.view addSubview:self.trackView];
     
-//    [self queryStepCount];
+    [self queryStepCount];
 }
 
 #pragma mark - Events
@@ -40,14 +40,21 @@ static NSTimeInterval const kDayTimeInterval = 60 * 60 * 24;
 - (void)queryStepCount {
     if ([CMPedometer isStepCountingAvailable]) {
         NSDate *fromDate = [NSDate dateWithTimeIntervalSinceNow:-kDayTimeInterval];
+        @weakify(self)
         [self.pedometer startPedometerUpdatesFromDate:fromDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
+            @strongify(self)
             if (!error) {
-                NSLog(@"步数 = %@", pedometerData.numberOfSteps);
-                NSLog(@"距离 = %@", pedometerData.distance);
-                NSLog(@"上楼 = %@", pedometerData.floorsAscended);
-                NSLog(@"下楼 = %@", pedometerData.floorsDescended);
-                NSLog(@"速度/米 = %@", pedometerData.currentPace);
-                NSLog(@"速度/步 = %@", pedometerData.currentCadence);
+                NSMutableDictionary *mutableDic = [NSMutableDictionary dictionaryWithCapacity:3];
+                mutableDic[@"step"] = [NSString stringWithFormat:@"%@", pedometerData.numberOfSteps];
+                mutableDic[@"distance"] = [NSString stringWithFormat:@"%@", pedometerData.distance];
+                mutableDic[@"floors"] = [NSString stringWithFormat:@"%@", pedometerData.floorsAscended];
+                [self.trackView reloadData:[NSDictionary dictionaryWithDictionary:mutableDic]];
+//                NSLog(@"步数 = %@", pedometerData.numberOfSteps);
+//                NSLog(@"距离 = %@", pedometerData.distance);
+//                NSLog(@"上楼 = %@", pedometerData.floorsAscended);
+//                NSLog(@"下楼 = %@", pedometerData.floorsDescended);
+//                NSLog(@"速度/米 = %@", pedometerData.currentPace);
+//                NSLog(@"速度/步 = %@", pedometerData.currentCadence);
             }else {
                 [[HYProgressHelper sharedInstance] showToast:error.description];
             }

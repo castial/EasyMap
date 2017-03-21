@@ -141,7 +141,7 @@
         [_locateBtn setImage:[UIImage imageNamed:@"locate_start"] forState:UIControlStateNormal];
         [_locateBtn setImage:[UIImage imageNamed:@"locate_start"] forState:UIControlStateHighlighted];
         _locateBtn.imageView.contentMode = UIControlContentHorizontalAlignmentFill;
-        [_locateBtn setImageEdgeInsets:UIEdgeInsetsMake(20, 20, 20, 20)];
+        [_locateBtn setImageEdgeInsets:UIEdgeInsetsMake(-3, -3, 0, 0)];
         [_locateBtn addTarget:self action:@selector(clickedLocateBtnHandler) forControlEvents:UIControlEventTouchUpInside];
     }
     return _locateBtn;

@@ -73,8 +73,14 @@
     }];
 }
 
-#pragma mark - Events
-
+#pragma mark - Public Methods
+- (void)reloadData:(NSDictionary *)dic {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.stepCountValueLabel.text = [dic objectForKey:@"step"];
+        self.distanceValueLabel.text = [dic objectForKey:@"distance"];
+        self.floorsValueLabel.text = [dic objectForKey:@"floors"];
+    });
+}
 
 #pragma mark - setter and getter
 - (UILabel *)stepCountLabel {
@@ -93,7 +99,7 @@
         _stepCountValueLabel.font = [UIFont systemFontOfSize:30.0f];
         _stepCountValueLabel.textAlignment = NSTextAlignmentCenter;
         _stepCountValueLabel.textColor = [UIColor lightGrayColor];
-        _stepCountValueLabel.text = @"12021";
+        _stepCountValueLabel.text = @"--";
     }
     return _stepCountValueLabel;
 }
@@ -114,7 +120,7 @@
         _distanceValueLabel.font = [UIFont systemFontOfSize:18.0f];
         _distanceValueLabel.textAlignment = NSTextAlignmentCenter;
         _distanceValueLabel.textColor = [UIColor lightGrayColor];
-        _distanceValueLabel.text = @"4.2公里";
+        _distanceValueLabel.text = @"--";
     }
     return _distanceValueLabel;
 }
@@ -135,7 +141,7 @@
         _floorsValueLabel.font = [UIFont systemFontOfSize:18.0f];
         _floorsValueLabel.textAlignment = NSTextAlignmentCenter;
         _floorsValueLabel.textColor = [UIColor lightGrayColor];
-        _floorsValueLabel.text = @"9层";
+        _floorsValueLabel.text = @"--";
     }
     return _floorsValueLabel;
 }

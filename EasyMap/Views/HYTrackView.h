@@ -15,4 +15,6 @@
 
 @property (strong, nonatomic) UILabel *stepCountLabel;
 
+- (void)reloadData:(NSDictionary *)dic;
+
 @end
