@@ -24,6 +24,7 @@
 		686538351E78DF79002F017E /* HYValidateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 686538341E78DF79002F017E /* HYValidateHelper.m */; };
 		686538391E793992002F017E /* HYLocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 686538381E793992002F017E /* HYLocationConverter.m */; };
 		6865383C1E795750002F017E /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 6865383B1E795750002F017E /* Track.m */; };
+		687BFE5C1E82925D0086A526 /* HYStepDayTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 687BFE5B1E82925D0086A526 /* HYStepDayTableCell.m */; };
 		687D43391E7799FF003449BE /* HYTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 687D43381E7799FF003449BE /* HYTrackView.m */; };
 		688819761E6EA9890015FDB3 /* HYNavSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819751E6EA9890015FDB3 /* HYNavSearchBar.m */; };
 		688819791E6EABFD0015FDB3 /* HYLocationMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819781E6EABFD0015FDB3 /* HYLocationMainController.m */; };
@@ -76,6 +77,8 @@
 		6865383A1E795750002F017E /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Model/Track.h; sourceTree = "<group>"; };
 		6865383B1E795750002F017E /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Track.m; path = Model/Track.m; sourceTree = "<group>"; };
 		68662C4C1E5ED3AD0067A662 /* EasyMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyMap-Prefix.pch"; sourceTree = "<group>"; };
+		687BFE5A1E82925D0086A526 /* HYStepDayTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYStepDayTableCell.h; path = Views/HYStepDayTableCell.h; sourceTree = "<group>"; };
+		687BFE5B1E82925D0086A526 /* HYStepDayTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYStepDayTableCell.m; path = Views/HYStepDayTableCell.m; sourceTree = "<group>"; };
 		687D43371E7799FF003449BE /* HYTrackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYTrackView.h; path = Views/HYTrackView.h; sourceTree = "<group>"; };
 		687D43381E7799FF003449BE /* HYTrackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYTrackView.m; path = Views/HYTrackView.m; sourceTree = "<group>"; };
 		688819741E6EA9890015FDB3 /* HYNavSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYNavSearchBar.h; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 				68204B801E7298DD002B7EEE /* HYContactAddCell.m */,
 				687D43371E7799FF003449BE /* HYTrackView.h */,
 				687D43381E7799FF003449BE /* HYTrackView.m */,
+				687BFE5A1E82925D0086A526 /* HYStepDayTableCell.h */,
+				687BFE5B1E82925D0086A526 /* HYStepDayTableCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 			files = (
 				6888197F1E6EAD450015FDB3 /* HYAccountMainController.m in Sources */,
 				68E2137E1E7A613E004F844F /* HYCrumbPath.m in Sources */,
+				687BFE5C1E82925D0086A526 /* HYStepDayTableCell.m in Sources */,
 				682302D01E68221C00A178B8 /* HYSegmentControl.m in Sources */,
 				68204B7E1E728D77002B7EEE /* HYContactAddController.m in Sources */,
 				6820017A1E63FD62008C6A22 /* UIViewController+AOP.m in Sources */,

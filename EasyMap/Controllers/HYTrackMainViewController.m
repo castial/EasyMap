@@ -39,8 +39,16 @@ static NSTimeInterval const kDayTimeInterval = 60 * 60 * 24;
 #pragma mark - Private Methods
 - (void)queryStepCount {
     if ([CMPedometer isStepCountingAvailable]) {
-        NSDate *fromDate = [NSDate dateWithTimeIntervalSinceNow:-kDayTimeInterval];
+        NSDate *fromDate = [NSDate dateWithTimeIntervalSinceNow:-kDayTimeInterval * 7];
         @weakify(self)
+        [self.pedometer queryPedometerDataFromDate:fromDate toDate:[NSDate date] withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
+            NSLog(@"步数 = %@", pedometerData.numberOfSteps);
+            NSLog(@"距离 = %@", pedometerData.distance);
+            NSLog(@"上楼 = %@", pedometerData.floorsAscended);
+            NSLog(@"下楼 = %@", pedometerData.floorsDescended);
+            NSLog(@"速度/米 = %@", pedometerData.currentPace);
+            NSLog(@"速度/步 = %@", pedometerData.currentCadence);
+        }];
         [self.pedometer startPedometerUpdatesFromDate:fromDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
             @strongify(self)
             if (!error) {
@@ -67,7 +75,7 @@ static NSTimeInterval const kDayTimeInterval = 60 * 60 * 24;
 #pragma mark - setter and getter
 - (HYTrackView *)trackView {
     if (!_trackView) {
-        _trackView = [[HYTrackView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TAB_BAR_HEIGHT)];
+        _trackView = [[HYTrackView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TAB_BAR_HEIGHT - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT)];
     }
     return _trackView;
 }

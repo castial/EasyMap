@@ -7,14 +7,17 @@
 //
 
 #import "HYTrackView.h"
+#import "HYStepDayTableCell.h"
 
-@interface HYTrackView()
+@interface HYTrackView()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UILabel *stepCountValueLabel;
 @property (nonatomic, strong) UILabel *distanceLabel;
 @property (nonatomic, strong) UILabel *distanceValueLabel;
 @property (nonatomic, strong) UILabel *floorsLabel;
 @property (nonatomic, strong) UILabel *floorsValueLabel;
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -38,6 +41,7 @@
     [self addSubview:self.distanceValueLabel];
     [self addSubview:self.floorsLabel];
     [self addSubview:self.floorsValueLabel];
+    [self addSubview:self.tableView];
 }
 
 - (void)initLayout {
@@ -71,6 +75,41 @@
         make.left.equalTo(self.distanceValueLabel.mas_right);
         make.size.mas_equalTo(CGSizeMake(CGRectGetWidth(self.frame)/2, 35));
     }];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.floorsValueLabel.mas_bottom);
+        make.left.right.bottom.equalTo(self);
+    }];
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
+    return 7;
+}
+
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
+    return [HYStepDayTableCell cellHeight];
+}
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
+    HYStepDayTableCell *cell = [HYStepDayTableCell cellWithTableView:tableView];
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section {
+    return 10;
+}
+
+- (CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.1f;
+}
+
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Public Methods
@@ -144,6 +183,15 @@
         _floorsValueLabel.text = @"--";
     }
     return _floorsValueLabel;
+}
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
 }
 
 @end
