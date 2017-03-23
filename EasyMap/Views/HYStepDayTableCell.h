@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class Pedometer;
 @interface HYStepDayTableCell : UITableViewCell
 
 +(NSString *)ID;
@@ -16,6 +17,6 @@
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
-@property (copy, nonatomic) NSDictionary *cellData;
+@property (nonatomic, strong) Pedometer *cellData;
 
 @end

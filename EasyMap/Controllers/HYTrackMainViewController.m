@@ -8,9 +8,8 @@
 
 #import "HYTrackMainViewController.h"
 #import "HYTrackView.h"
-
-// 一天时间
-static NSTimeInterval const kDayTimeInterval = 60 * 60 * 24;
+#import "NSDate+YYAdd.h"
+#import "Pedometer.h"
 
 @interface HYTrackMainViewController ()
 
@@ -39,37 +38,79 @@ static NSTimeInterval const kDayTimeInterval = 60 * 60 * 24;
 #pragma mark - Private Methods
 - (void)queryStepCount {
     if ([CMPedometer isStepCountingAvailable]) {
-        NSDate *fromDate = [NSDate dateWithTimeIntervalSinceNow:-kDayTimeInterval * 7];
-        @weakify(self)
-        [self.pedometer queryPedometerDataFromDate:fromDate toDate:[NSDate date] withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
-            NSLog(@"步数 = %@", pedometerData.numberOfSteps);
-            NSLog(@"距离 = %@", pedometerData.distance);
-            NSLog(@"上楼 = %@", pedometerData.floorsAscended);
-            NSLog(@"下楼 = %@", pedometerData.floorsDescended);
-            NSLog(@"速度/米 = %@", pedometerData.currentPace);
-            NSLog(@"速度/步 = %@", pedometerData.currentCadence);
+        // 查询今日步数
+        [self queryTodayPedometerDateWithHandler:^(Pedometer *pedometer) {
+            NSLog(@"当前线程: %d", [NSThread isMainThread]);
+            [self.trackView refreshTodayData:pedometer];
         }];
-        [self.pedometer startPedometerUpdatesFromDate:fromDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
-            @strongify(self)
-            if (!error) {
-                NSMutableDictionary *mutableDic = [NSMutableDictionary dictionaryWithCapacity:3];
-                mutableDic[@"step"] = [NSString stringWithFormat:@"%@", pedometerData.numberOfSteps];
-                mutableDic[@"distance"] = [NSString stringWithFormat:@"%@", pedometerData.distance];
-                mutableDic[@"floors"] = [NSString stringWithFormat:@"%@", pedometerData.floorsAscended];
-                [self.trackView reloadData:[NSDictionary dictionaryWithDictionary:mutableDic]];
-//                NSLog(@"步数 = %@", pedometerData.numberOfSteps);
-//                NSLog(@"距离 = %@", pedometerData.distance);
-//                NSLog(@"上楼 = %@", pedometerData.floorsAscended);
-//                NSLog(@"下楼 = %@", pedometerData.floorsDescended);
-//                NSLog(@"速度/米 = %@", pedometerData.currentPace);
-//                NSLog(@"速度/步 = %@", pedometerData.currentCadence);
-            }else {
-                [[HYProgressHelper sharedInstance] showToast:error.description];
-            }
+        // 查询过去7天步数统计
+        [self queryWeekPedometerData:^(NSArray<Pedometer *> *pedometerArray) {
+            NSLog(@"当前线程: %d", [NSThread isMainThread]);
+            [self.trackView refreshLastSevenDayData:pedometerArray];
         }];
     }else {
         [[HYProgressHelper sharedInstance] showToast:@"记步功能不可用"];
     }
+}
+
+/**
+ 查询今日的记步数据
+
+ @param handler 回调
+ */
+- (void)queryTodayPedometerDateWithHandler:(void (^)(Pedometer *pedometer))handler {
+    NSString *startDateStr = [NSString stringWithFormat:@"%@-%@-%@ 00:00:00", [NSDate date].year, [NSDate date].month, [NSDate date].day];
+    NSDate *startDate = [NSDate dateWithString:startDateStr format:@"yyyy-MM-dd HH:mm:ss"];
+    [self.pedometer startPedometerUpdatesFromDate:startDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
+        Pedometer *pedometer = [[Pedometer alloc] init];
+        pedometer.dayDate = [NSDate dateWithString:[NSString stringWithFormat:@"%@-%@-%@ 00:00:00", pedometerData.endDate.year, pedometerData.endDate.month, pedometerData.endDate.day] format:@"yyyy-MM-dd"];
+        pedometer.stepCount = [pedometerData.numberOfSteps integerValue];
+        pedometer.distance = [pedometerData.distance floatValue];
+        pedometer.floorsAscended = [pedometerData.floorsAscended integerValue];
+        pedometer.floorsDescended = [pedometerData.floorsDescended integerValue];
+
+        handler(pedometer);
+    }];
+}
+
+/**
+ 查询最近7天的记步数据
+
+ @param handler 回调
+ */
+- (void)queryWeekPedometerData:(void (^)(NSArray<Pedometer *> *pedometerArray))handler {
+    NSMutableArray *mutableArray = [NSMutableArray array];
+    for (int i = 0; i < 7; i++) {
+        NSDate *dayDate = [[NSDate date] dateByAddingDays:-i-1];
+        [self queryDayPedometerData:dayDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
+            Pedometer *pedometer = [[Pedometer alloc] init];
+            pedometer.dayDate = [NSDate dateWithString:[NSString stringWithFormat:@"%@-%@-%@ 00:00:00", pedometerData.endDate.year, pedometerData.endDate.month, pedometerData.endDate.day] format:@"yyyy-MM-dd"];
+            pedometer.stepCount = [pedometerData.numberOfSteps integerValue];
+            pedometer.distance = [pedometerData.distance floatValue];
+            pedometer.floorsAscended = [pedometerData.floorsAscended integerValue];
+            pedometer.floorsDescended = [pedometerData.floorsDescended integerValue];
+            [mutableArray addObject:pedometer];
+            if (i == 6) {
+                handler([NSArray arrayWithArray:mutableArray]);
+            }
+        }];
+    }
+}
+
+/**
+ 查询一天的记步数据
+
+ @param dayDate 哪一天
+ @param handler 回调
+ */
+- (void)queryDayPedometerData:(NSDate *)dayDate withHandler:(void (^)(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error))handler {
+    NSString *fromDateStr = [NSString stringWithFormat:@"%@-%@-%@ 00:00:00", dayDate.year, dayDate.month, dayDate.day];
+    NSString *endDateStr = [NSString stringWithFormat:@"%@-%@-%@ 23:59:59", dayDate.year, dayDate.month, dayDate.day];
+    NSDate *fromDate = [NSDate dateWithString:fromDateStr format:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *endDate = [NSDate dateWithString:endDateStr format:@"yyyy-MM-dd HH:mm:ss"];
+    [self.pedometer queryPedometerDataFromDate:fromDate toDate:endDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
+        handler(pedometerData, error);
+    }];
 }
 
 #pragma mark - setter and getter

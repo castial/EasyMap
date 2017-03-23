@@ -8,6 +8,7 @@
 
 #import "HYTrackView.h"
 #import "HYStepDayTableCell.h"
+#import "Pedometer.h"
 
 @interface HYTrackView()<UITableViewDelegate, UITableViewDataSource>
 
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) UILabel *floorsValueLabel;
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, copy) NSArray *dataArray;
 
 @end
 
@@ -87,7 +89,7 @@
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -96,6 +98,7 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
     HYStepDayTableCell *cell = [HYStepDayTableCell cellWithTableView:tableView];
+    cell.cellData = [self.dataArray objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -113,11 +116,18 @@
 }
 
 #pragma mark - Public Methods
-- (void)reloadData:(NSDictionary *)dic {
+- (void)refreshTodayData:(Pedometer *)todayPedometer {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.stepCountValueLabel.text = [dic objectForKey:@"step"];
-        self.distanceValueLabel.text = [dic objectForKey:@"distance"];
-        self.floorsValueLabel.text = [dic objectForKey:@"floors"];
+        self.stepCountValueLabel.text = [NSString stringWithFormat:@"%ld", todayPedometer.stepCount];
+        self.distanceValueLabel.text = [NSString stringWithFormat:@"%.2f", todayPedometer.distance];
+        self.floorsValueLabel.text = [NSString stringWithFormat:@"%ld", todayPedometer.stepCount];
+    });
+}
+
+- (void)refreshLastSevenDayData:(NSArray<Pedometer *> *)pedometerArray {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.dataArray = pedometerArray;
+        [self.tableView reloadData];
     });
 }
 
@@ -192,6 +202,13 @@
         _tableView.dataSource = self;
     }
     return _tableView;
+}
+
+- (NSArray *)dataArray {
+    if (!_dataArray) {
+        _dataArray = [NSArray array];
+    }
+    return _dataArray;
 }
 
 @end

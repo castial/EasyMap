@@ -40,6 +40,8 @@
 		68E65BE41E70EE8B002CCB1E /* HYProgressHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E65BE31E70EE8B002CCB1E /* HYProgressHelper.m */; };
 		68E65BE71E712110002CCB1E /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E65BE61E712110002CCB1E /* UIImage+Utils.m */; };
 		68E65BEA1E716DAB002CCB1E /* HYContactGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E65BE91E716DAB002CCB1E /* HYContactGroupController.m */; };
+		68F062EA1E83986300D31396 /* NSDate+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F062E91E83986300D31396 /* NSDate+YYAdd.m */; };
+		68F0630B1E83CB5B00D31396 /* Pedometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F0630A1E83CB5B00D31396 /* Pedometer.m */; };
 		AB8F33E23423D554A8C336D6 /* libPods-EasyMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D214ED617C83E2D915A4BA97 /* libPods-EasyMap.a */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +110,10 @@
 		68E65BE61E712110002CCB1E /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Utils.m"; path = "Expand/Category/UIImage+Utils.m"; sourceTree = "<group>"; };
 		68E65BE81E716DAB002CCB1E /* HYContactGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYContactGroupController.h; sourceTree = "<group>"; };
 		68E65BE91E716DAB002CCB1E /* HYContactGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYContactGroupController.m; sourceTree = "<group>"; };
+		68F062E81E83986300D31396 /* NSDate+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+YYAdd.h"; path = "Expand/Category/NSDate+YYAdd.h"; sourceTree = "<group>"; };
+		68F062E91E83986300D31396 /* NSDate+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+YYAdd.m"; path = "Expand/Category/NSDate+YYAdd.m"; sourceTree = "<group>"; };
+		68F063091E83CB5B00D31396 /* Pedometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pedometer.h; path = Model/Pedometer.h; sourceTree = "<group>"; };
+		68F0630A1E83CB5B00D31396 /* Pedometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pedometer.m; path = Model/Pedometer.m; sourceTree = "<group>"; };
 		C7798A2983E553E5E5095F1E /* Pods-EasyMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyMap/Pods-EasyMap.debug.xcconfig"; sourceTree = "<group>"; };
 		D214ED617C83E2D915A4BA97 /* libPods-EasyMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyMap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -211,6 +217,8 @@
 				68204B831E72AFE2002B7EEE /* UITableView+EmptyData.m */,
 				68885FDE1E76730400A9A237 /* UIResponder+Router.h */,
 				68885FDF1E76730400A9A237 /* UIResponder+Router.m */,
+				68F062E81E83986300D31396 /* NSDate+YYAdd.h */,
+				68F062E91E83986300D31396 /* NSDate+YYAdd.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -222,6 +230,8 @@
 				68204B7A1E72788D002B7EEE /* Contact.m */,
 				6865383A1E795750002F017E /* Track.h */,
 				6865383B1E795750002F017E /* Track.m */,
+				68F063091E83CB5B00D31396 /* Pedometer.h */,
+				68F0630A1E83CB5B00D31396 /* Pedometer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -499,6 +509,7 @@
 				6820017A1E63FD62008C6A22 /* UIViewController+AOP.m in Sources */,
 				68E65BEA1E716DAB002CCB1E /* HYContactGroupController.m in Sources */,
 				688819761E6EA9890015FDB3 /* HYNavSearchBar.m in Sources */,
+				68F062EA1E83986300D31396 /* NSDate+YYAdd.m in Sources */,
 				68E213811E7A6D39004F844F /* HYCrumbPathRenderer.m in Sources */,
 				682302CD1E68213200A178B8 /* HYViewPagerController.m in Sources */,
 				68BB50E71E6FF587005FC78E /* HYLocateView.m in Sources */,
@@ -513,6 +524,7 @@
 				681D6EB41E6D5B2A00243277 /* HYNavigationController.m in Sources */,
 				68204B811E7298DD002B7EEE /* HYContactAddCell.m in Sources */,
 				6888197C1E6EAC7A0015FDB3 /* HYTrackMainViewController.m in Sources */,
+				68F0630B1E83CB5B00D31396 /* Pedometer.m in Sources */,
 				687D43391E7799FF003449BE /* HYTrackView.m in Sources */,
 				686538351E78DF79002F017E /* HYValidateHelper.m in Sources */,
 				688819791E6EABFD0015FDB3 /* HYLocationMainController.m in Sources */,
@@ -636,7 +648,7 @@
 				INFOPLIST_FILE = "EasyMap/EasyMap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyyy.easymap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyyy.holds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -653,7 +665,7 @@
 				INFOPLIST_FILE = "EasyMap/EasyMap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyyy.easymap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyyy.holds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

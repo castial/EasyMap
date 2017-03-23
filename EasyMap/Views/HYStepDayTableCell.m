@@ -7,6 +7,7 @@
 //
 
 #import "HYStepDayTableCell.h"
+#import "Pedometer.h"
 
 static NSString *const HYStepDayTableCell_ID = @"HYStepDayTableCell";
 static CGFloat const HYStepDayTableCell_Height = 140;
@@ -175,6 +176,16 @@ static CGFloat const HYStepDayTableCell_Height = 140;
         _floorsValueLabel.textColor = [UIColor lightGrayColor];
     }
     return _floorsValueLabel;
+}
+
+- (void)setCellData:(Pedometer *)cellData {
+    _cellData = cellData;
+    
+    if (cellData) {
+        self.stepValueLabel.text = [NSString stringWithFormat:@"%ld", cellData.stepCount];
+        self.distanceValueLabel.text = [NSString stringWithFormat:@"%.2f", cellData.distance];
+        self.floorsValueLabel.text = [NSString stringWithFormat:@"%ld", cellData.floorsAscended];
+    }
 }
 
 @end
