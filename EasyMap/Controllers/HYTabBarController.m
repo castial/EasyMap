@@ -8,9 +8,9 @@
 
 #import "HYTabBarController.h"
 #import "HYNavigationController.h"
-#import "HYLocationMainController.h"
-#import "HYTrackMainViewController.h"
-#import "HYAccountMainController.h"
+#import "HYMainAccountController.h"
+#import "HYMainTodayController.h"
+#import "HYMainHistoryController.h"
 
 @interface HYTabBarController ()
 
@@ -21,14 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 定位
-    HYLocationMainController *locateVC = [[HYLocationMainController alloc] init];
-    [self setupChildVC:locateVC title:@"定位" imageName:@"locate" selectedImageName:@"locate_selected"];
-    // 轨迹
-    HYTrackMainViewController *trackVC = [[HYTrackMainViewController alloc] init];
-    [self setupChildVC:trackVC title:@"轨迹" imageName:@"track" selectedImageName:@"track_selected"];
+    // 今天
+    HYMainTodayController *todayVC = [[HYMainTodayController alloc] init];
+    [self setupChildVC:todayVC title:@"今天" imageName:@"locate" selectedImageName:@"locate_selected"];
+    // 历史
+    HYMainHistoryController *historyVC = [[HYMainHistoryController alloc] init];
+    [self setupChildVC:historyVC title:@"数据" imageName:@"track" selectedImageName:@"track_selected"];
     // 我
-    HYAccountMainController *accountVC = [[HYAccountMainController alloc] init];
+    HYMainAccountController *accountVC = [[HYMainAccountController alloc] init];
     [self setupChildVC:accountVC title:@"我" imageName:@"account" selectedImageName:@"account_selected"];
     
     // 修改TabBar效果

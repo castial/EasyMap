@@ -1,5 +1,5 @@
 //
-//  HYLocationMainController.h
+//  HYMainAccountController.h
 //  EasyMap
 //
 //  Created by hyyy on 2017/3/7.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HYLocationMainController : UIViewController
+@interface HYMainAccountController : UIViewController
 
 @end

@@ -1,18 +1,18 @@
 //
-//  HYAccountMainController.m
+//  HYMainAccountController.m
 //  EasyMap
 //
 //  Created by hyyy on 2017/3/7.
 //  Copyright © 2017年 hyyy. All rights reserved.
 //
 
-#import "HYAccountMainController.h"
+#import "HYMainAccountController.h"
 
-@interface HYAccountMainController ()
+@interface HYMainAccountController ()
 
 @end
 
-@implementation HYAccountMainController
+@implementation HYMainAccountController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
