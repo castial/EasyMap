@@ -7,12 +7,13 @@
 //
 
 #import "HYMainTodayView.h"
+#import "HYMainTodayCircleView.h"
+#import "HYMainTodayBottomView.h"
 
 @interface HYMainTodayView()
 
-@property (nonatomic, strong) UILabel *todayStepLabel;
-@property (nonatomic, strong) UILabel *todayStepValueLabel;
-@property (nonatomic, strong) UILabel *targetLabel;
+@property (nonatomic, strong) HYMainTodayCircleView *circieView;
+@property (nonatomic, strong) HYMainTodayBottomView *bottomView;
 
 @end
 
@@ -23,65 +24,40 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self initUI];
-        [self initLayout];
     }
     return self;
 }
 
 #pragma mark - init UI and Layout
 - (void)initUI {
-    [self addSubview:self.todayStepLabel];
-    [self addSubview:self.todayStepValueLabel];
-    [self addSubview:self.targetLabel];
+    [self addSubview:self.circieView];
+    [self addSubview:self.bottomView];
 }
 
-- (void)initLayout {
-    [self.todayStepLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.mas_centerX);
-        make.top.equalTo(self.mas_top).offset(100);
-        make.size.mas_equalTo(CGSizeMake(120, 20));
+- (void)layoutSubviews {
+    [self.circieView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.equalTo(self);
+        make.height.mas_equalTo(CGRectGetWidth(self.bounds) * 0.8);
     }];
-    [self.todayStepValueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.mas_centerX);
-        make.top.equalTo(self.todayStepLabel.mas_bottom);
-        make.size.mas_equalTo(CGSizeMake(120, 35));
-    }];
-    [self.targetLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.mas_centerX);
-        make.top.equalTo(self.todayStepValueLabel.mas_bottom);
-        make.size.mas_equalTo(CGSizeMake(100, 20));
+    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self);
+        make.height.mas_equalTo(200);
     }];
 }
 
 #pragma mark - setter and getter
-- (UILabel *)todayStepLabel {
-    if (!_todayStepLabel) {
-        _todayStepLabel = [UILabel new];
-        _todayStepLabel.font = [UIFont systemFontOfSize:12.0f];
-        _todayStepLabel.text = @"今日步数";
-        _todayStepLabel.textAlignment = NSTextAlignmentCenter;
+- (HYMainTodayCircleView *)circieView {
+    if (!_circieView) {
+        _circieView = [[HYMainTodayCircleView alloc] init];
     }
-    return _todayStepLabel;
+    return _circieView;
 }
 
-- (UILabel *)todayStepValueLabel {
-    if (!_todayStepValueLabel) {
-        _todayStepValueLabel = [UILabel new];
-        _todayStepValueLabel.font = [UIFont systemFontOfSize:24.0f];
-        _todayStepValueLabel.textAlignment = NSTextAlignmentCenter;
-        _todayStepValueLabel.text = @"3952";
+- (HYMainTodayBottomView *)bottomView {
+    if (!_bottomView) {
+        _bottomView = [[HYMainTodayBottomView alloc] init];
     }
-    return _todayStepValueLabel;
-}
-
-- (UILabel *)targetLabel {
-    if (!_targetLabel) {
-        _targetLabel = [UILabel new];
-        _targetLabel.font = [UIFont systemFontOfSize:12.0f];
-        _targetLabel.text = @"目标  10000";
-        _targetLabel.textAlignment = NSTextAlignmentCenter;
-    }
-    return _targetLabel;
+    return _bottomView;
 }
 
 @end

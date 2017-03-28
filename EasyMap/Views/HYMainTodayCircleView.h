@@ -10,25 +10,5 @@
 
 @interface HYMainTodayCircleView : UIView
 
-/**
- 开始角度
- */
-@property (nonatomic, assign) CGFloat startAngle;
-/**
- 结束角度
- */
-@property (nonatomic, assign) CGFloat endAngle;
-/**
- 圆环线宽
- */
-@property (nonatomic, assign) CGFloat lineWidth;
-/**
- 圆环线条背景颜色
- */
-@property (nonatomic, strong) UIColor *backgroundFillColor;
-/**
- 圆环填充颜色
- */
-@property (nonatomic, strong) UIColor *fillColor;
 
 @end

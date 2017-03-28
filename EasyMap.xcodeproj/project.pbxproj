@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		680356221E8A8042007210FE /* HYMainTodayBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 680356211E8A8042007210FE /* HYMainTodayBottomView.m */; };
 		681D6EB41E6D5B2A00243277 /* HYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D6EB31E6D5B2A00243277 /* HYNavigationController.m */; };
 		681D6EBD1E6D624500243277 /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 681D6EBB1E6D624500243277 /* btn_back@2x.png */; };
 		681D6EBE1E6D624500243277 /* btn_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 681D6EBC1E6D624500243277 /* btn_back@3x.png */; };
@@ -45,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		29E39188F507432E59944F9D /* Pods-EasyMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyMap/Pods-EasyMap.release.xcconfig"; sourceTree = "<group>"; };
+		680356201E8A8042007210FE /* HYMainTodayBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYMainTodayBottomView.h; path = Views/HYMainTodayBottomView.h; sourceTree = "<group>"; };
+		680356211E8A8042007210FE /* HYMainTodayBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYMainTodayBottomView.m; path = Views/HYMainTodayBottomView.m; sourceTree = "<group>"; };
 		681D6EB21E6D5B2A00243277 /* HYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYNavigationController.h; path = Expand/Components/HYNavigationController/HYNavigationController.h; sourceTree = "<group>"; };
 		681D6EB31E6D5B2A00243277 /* HYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYNavigationController.m; path = Expand/Components/HYNavigationController/HYNavigationController.m; sourceTree = "<group>"; };
 		681D6EBB1E6D624500243277 /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_back@2x.png"; path = "Expand/Components/HYNavigationController/btn_back@2x.png"; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				68A136DA1E892F7800717C34 /* HYMainAccountView.m */,
 				68A136DC1E89381300717C34 /* HYMainTodayCircleView.h */,
 				68A136DD1E89381300717C34 /* HYMainTodayCircleView.m */,
+				680356201E8A8042007210FE /* HYMainTodayBottomView.h */,
+				680356211E8A8042007210FE /* HYMainTodayBottomView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 				68E65BE71E712110002CCB1E /* UIImage+Utils.m in Sources */,
 				681D6EB41E6D5B2A00243277 /* HYNavigationController.m in Sources */,
 				68F0630B1E83CB5B00D31396 /* Pedometer.m in Sources */,
+				680356221E8A8042007210FE /* HYMainTodayBottomView.m in Sources */,
 				68A136D51E892F4E00717C34 /* HYMainTodayView.m in Sources */,
 				686538351E78DF79002F017E /* HYValidateHelper.m in Sources */,
 				68A136DE1E89381300717C34 /* HYMainTodayCircleView.m in Sources */,

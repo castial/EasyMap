@@ -28,7 +28,7 @@
 #pragma mark - setter and getter
 - (HYMainTodayView *)todayView {
     if (!_todayView) {
-        _todayView = [[HYMainTodayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _todayView = [[HYMainTodayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_BAR_HEIGHT - STATUS_BAR_HEIGHT - TAB_BAR_HEIGHT)];
     }
     return _todayView;
 }
