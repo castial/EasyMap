@@ -10,4 +10,5 @@ target 'EasyMap' do
   pod 'MBProgressHUD'
   pod 'Realm'
   pod 'IQKeyboardManager'
+  pod 'PNChart'
 end
