@@ -4,9 +4,6 @@ PODS:
   - MBProgressHUD (1.0.0)
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
-  - Realm (2.3.0):
-    - Realm/Headers (= 2.3.0)
-  - Realm/Headers (2.3.0)
   - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
@@ -14,16 +11,14 @@ DEPENDENCIES:
   - Masonry
   - MBProgressHUD
   - PNChart
-  - Realm
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
-  Realm: 69d7de9aa569a11eed490aaabc8f2109e3985ecf
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-PODFILE CHECKSUM: e2cea9187d5770fd7a229bc982153decb0ff12e9
+PODFILE CHECKSUM: c7ba4f250a21a9c25dbc470f23c37d5f0fff130e
 
-COCOAPODS: 1.2.0.rc.1
+COCOAPODS: 1.2.0

@@ -12,7 +12,6 @@
 		681D6EBD1E6D624500243277 /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 681D6EBB1E6D624500243277 /* btn_back@2x.png */; };
 		681D6EBE1E6D624500243277 /* btn_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 681D6EBC1E6D624500243277 /* btn_back@3x.png */; };
 		6820017A1E63FD62008C6A22 /* UIViewController+AOP.m in Sources */ = {isa = PBXBuildFile; fileRef = 682001791E63FD62008C6A22 /* UIViewController+AOP.m */; };
-		68204B7B1E72788D002B7EEE /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 68204B7A1E72788D002B7EEE /* Contact.m */; };
 		68204B841E72AFE2002B7EEE /* UITableView+EmptyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 68204B831E72AFE2002B7EEE /* UITableView+EmptyData.m */; };
 		682302CD1E68213200A178B8 /* HYViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682302CC1E68213200A178B8 /* HYViewPagerController.m */; };
 		682302D01E68221C00A178B8 /* HYSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 682302CF1E68221C00A178B8 /* HYSegmentControl.m */; };
@@ -20,9 +19,9 @@
 		68321D961E5EB86C002A6F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68321D951E5EB86C002A6F3F /* Assets.xcassets */; };
 		68321D991E5EB86C002A6F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68321D971E5EB86C002A6F3F /* LaunchScreen.storyboard */; };
 		68321DA31E5EB8E4002A6F3F /* HYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */; };
+		684CEF871E90F1EB0097F991 /* HYMainHistoryWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 684CEF861E90F1EB0097F991 /* HYMainHistoryWeekCell.m */; };
 		686538351E78DF79002F017E /* HYValidateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 686538341E78DF79002F017E /* HYValidateHelper.m */; };
 		686538391E793992002F017E /* HYLocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 686538381E793992002F017E /* HYLocationConverter.m */; };
-		6865383C1E795750002F017E /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 6865383B1E795750002F017E /* Track.m */; };
 		688819761E6EA9890015FDB3 /* HYNavSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819751E6EA9890015FDB3 /* HYNavSearchBar.m */; };
 		6888197F1E6EAD450015FDB3 /* HYMainAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888197E1E6EAD450015FDB3 /* HYMainAccountController.m */; };
 		688819821E6EB0BD0015FDB3 /* HYTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688819811E6EB0BD0015FDB3 /* HYTabBarController.m */; };
@@ -40,7 +39,6 @@
 		68E65BE41E70EE8B002CCB1E /* HYProgressHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E65BE31E70EE8B002CCB1E /* HYProgressHelper.m */; };
 		68E65BE71E712110002CCB1E /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E65BE61E712110002CCB1E /* UIImage+Utils.m */; };
 		68F062EA1E83986300D31396 /* NSDate+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F062E91E83986300D31396 /* NSDate+YYAdd.m */; };
-		68F0630B1E83CB5B00D31396 /* Pedometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F0630A1E83CB5B00D31396 /* Pedometer.m */; };
 		AB8F33E23423D554A8C336D6 /* libPods-EasyMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D214ED617C83E2D915A4BA97 /* libPods-EasyMap.a */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +52,6 @@
 		681D6EBC1E6D624500243277 /* btn_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_back@3x.png"; path = "Expand/Components/HYNavigationController/btn_back@3x.png"; sourceTree = "<group>"; };
 		682001781E63FD62008C6A22 /* UIViewController+AOP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AOP.h"; path = "Expand/Category/UIViewController+AOP.h"; sourceTree = "<group>"; };
 		682001791E63FD62008C6A22 /* UIViewController+AOP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+AOP.m"; path = "Expand/Category/UIViewController+AOP.m"; sourceTree = "<group>"; };
-		68204B791E72788D002B7EEE /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contact.h; path = Model/Contact.h; sourceTree = "<group>"; };
-		68204B7A1E72788D002B7EEE /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contact.m; path = Model/Contact.m; sourceTree = "<group>"; };
 		68204B821E72AFE2002B7EEE /* UITableView+EmptyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+EmptyData.h"; path = "Expand/Category/UITableView+EmptyData.h"; sourceTree = "<group>"; };
 		68204B831E72AFE2002B7EEE /* UITableView+EmptyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+EmptyData.m"; path = "Expand/Category/UITableView+EmptyData.m"; sourceTree = "<group>"; };
 		682302CB1E68213200A178B8 /* HYViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYViewPagerController.h; sourceTree = "<group>"; };
@@ -69,12 +65,12 @@
 		68321D9A1E5EB86C002A6F3F /* EasyMap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EasyMap-Info.plist"; sourceTree = "<group>"; };
 		68321DA11E5EB8E4002A6F3F /* HYAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYAppDelegate.h; path = AppDelegate/HYAppDelegate.h; sourceTree = "<group>"; };
 		68321DA21E5EB8E4002A6F3F /* HYAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYAppDelegate.m; path = AppDelegate/HYAppDelegate.m; sourceTree = "<group>"; };
+		684CEF851E90F1EB0097F991 /* HYMainHistoryWeekCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYMainHistoryWeekCell.h; path = Views/HYMainHistoryWeekCell.h; sourceTree = "<group>"; };
+		684CEF861E90F1EB0097F991 /* HYMainHistoryWeekCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYMainHistoryWeekCell.m; path = Views/HYMainHistoryWeekCell.m; sourceTree = "<group>"; };
 		686538331E78DF79002F017E /* HYValidateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYValidateHelper.h; path = Expand/Utils/HYValidateHelper/HYValidateHelper.h; sourceTree = "<group>"; };
 		686538341E78DF79002F017E /* HYValidateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYValidateHelper.m; path = Expand/Utils/HYValidateHelper/HYValidateHelper.m; sourceTree = "<group>"; };
 		686538371E793992002F017E /* HYLocationConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYLocationConverter.h; path = Expand/Components/HYLocationConverter/HYLocationConverter.h; sourceTree = "<group>"; };
 		686538381E793992002F017E /* HYLocationConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYLocationConverter.m; path = Expand/Components/HYLocationConverter/HYLocationConverter.m; sourceTree = "<group>"; };
-		6865383A1E795750002F017E /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Model/Track.h; sourceTree = "<group>"; };
-		6865383B1E795750002F017E /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Track.m; path = Model/Track.m; sourceTree = "<group>"; };
 		68662C4C1E5ED3AD0067A662 /* EasyMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyMap-Prefix.pch"; sourceTree = "<group>"; };
 		688819741E6EA9890015FDB3 /* HYNavSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYNavSearchBar.h; sourceTree = "<group>"; };
 		688819751E6EA9890015FDB3 /* HYNavSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYNavSearchBar.m; sourceTree = "<group>"; };
@@ -109,8 +105,6 @@
 		68E65BE61E712110002CCB1E /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Utils.m"; path = "Expand/Category/UIImage+Utils.m"; sourceTree = "<group>"; };
 		68F062E81E83986300D31396 /* NSDate+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+YYAdd.h"; path = "Expand/Category/NSDate+YYAdd.h"; sourceTree = "<group>"; };
 		68F062E91E83986300D31396 /* NSDate+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+YYAdd.m"; path = "Expand/Category/NSDate+YYAdd.m"; sourceTree = "<group>"; };
-		68F063091E83CB5B00D31396 /* Pedometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pedometer.h; path = Model/Pedometer.h; sourceTree = "<group>"; };
-		68F0630A1E83CB5B00D31396 /* Pedometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pedometer.m; path = Model/Pedometer.m; sourceTree = "<group>"; };
 		C7798A2983E553E5E5095F1E /* Pods-EasyMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyMap/Pods-EasyMap.debug.xcconfig"; sourceTree = "<group>"; };
 		D214ED617C83E2D915A4BA97 /* libPods-EasyMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyMap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -164,6 +158,8 @@
 				68A136D41E892F4E00717C34 /* HYMainTodayView.m */,
 				68A136D61E892F6300717C34 /* HYMainHistoryView.h */,
 				68A136D71E892F6300717C34 /* HYMainHistoryView.m */,
+				684CEF851E90F1EB0097F991 /* HYMainHistoryWeekCell.h */,
+				684CEF861E90F1EB0097F991 /* HYMainHistoryWeekCell.m */,
 				68A136D91E892F7800717C34 /* HYMainAccountView.h */,
 				68A136DA1E892F7800717C34 /* HYMainAccountView.m */,
 				68A136DC1E89381300717C34 /* HYMainTodayCircleView.h */,
@@ -221,12 +217,6 @@
 		68204B781E72782B002B7EEE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				68204B791E72788D002B7EEE /* Contact.h */,
-				68204B7A1E72788D002B7EEE /* Contact.m */,
-				6865383A1E795750002F017E /* Track.h */,
-				6865383B1E795750002F017E /* Track.m */,
-				68F063091E83CB5B00D31396 /* Pedometer.h */,
-				68F0630A1E83CB5B00D31396 /* Pedometer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -509,13 +499,11 @@
 				68321D8B1E5EB86C002A6F3F /* main.m in Sources */,
 				688819821E6EB0BD0015FDB3 /* HYTabBarController.m in Sources */,
 				686538391E793992002F017E /* HYLocationConverter.m in Sources */,
-				68204B7B1E72788D002B7EEE /* Contact.m in Sources */,
 				68885FE01E76730400A9A237 /* UIResponder+Router.m in Sources */,
-				6865383C1E795750002F017E /* Track.m in Sources */,
 				68E65BE41E70EE8B002CCB1E /* HYProgressHelper.m in Sources */,
 				68E65BE71E712110002CCB1E /* UIImage+Utils.m in Sources */,
+				684CEF871E90F1EB0097F991 /* HYMainHistoryWeekCell.m in Sources */,
 				681D6EB41E6D5B2A00243277 /* HYNavigationController.m in Sources */,
-				68F0630B1E83CB5B00D31396 /* Pedometer.m in Sources */,
 				680356221E8A8042007210FE /* HYMainTodayBottomView.m in Sources */,
 				68A136D51E892F4E00717C34 /* HYMainTodayView.m in Sources */,
 				686538351E78DF79002F017E /* HYValidateHelper.m in Sources */,

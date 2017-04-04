@@ -7,8 +7,11 @@
 //
 
 #import "HYMainHistoryController.h"
+#import "HYMainHistoryView.h"
 
 @interface HYMainHistoryController ()
+
+@property (nonatomic, strong) HYMainHistoryView *historyView;
 
 @end
 
@@ -16,12 +19,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.title = @"一周";
+    [self.view addSubview:self.historyView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - setter and getter
+- (HYMainHistoryView *)historyView {
+    if (!_historyView) {
+        _historyView = [[HYMainHistoryView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT)];
+    }
+    return _historyView;
 }
 
 @end

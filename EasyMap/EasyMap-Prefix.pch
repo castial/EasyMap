@@ -19,6 +19,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import "HYProgressHelper.h"
 #import "UIResponder+Router.h"
+#import "PNChart.h"
 
 /**
  Synthsize a weak or strong reference.

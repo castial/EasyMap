@@ -7,8 +7,11 @@
 //
 
 #import "HYMainAccountController.h"
+#import "HYMainAccountView.h"
 
 @interface HYMainAccountController ()
+
+@property (nonatomic, strong) HYMainAccountView *accountView;
 
 @end
 
@@ -18,22 +21,15 @@
     [super viewDidLoad];
     
     self.title = @"我";
-    // Do any additional setup after loading the view.
+    [self.view addSubview:self.accountView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - setter and getter
+- (HYMainAccountView *)accountView {
+    if (!_accountView) {
+        _accountView = [[HYMainAccountView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT)];
+    }
+    return _accountView;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

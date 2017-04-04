@@ -8,7 +8,6 @@ platform :ios, '8.0'
 target 'EasyMap' do
   pod 'Masonry'
   pod 'MBProgressHUD'
-  pod 'Realm'
   pod 'IQKeyboardManager'
   pod 'PNChart'
 end
