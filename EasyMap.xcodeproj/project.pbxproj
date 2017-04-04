@@ -15,6 +15,8 @@
 		68204B841E72AFE2002B7EEE /* UITableView+EmptyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 68204B831E72AFE2002B7EEE /* UITableView+EmptyData.m */; };
 		682302CD1E68213200A178B8 /* HYViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682302CC1E68213200A178B8 /* HYViewPagerController.m */; };
 		682302D01E68221C00A178B8 /* HYSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 682302CF1E68221C00A178B8 /* HYSegmentControl.m */; };
+		682FA2AE1E936EB000EBC6CF /* HYHistoryWeekDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682FA2AD1E936EB000EBC6CF /* HYHistoryWeekDetailController.m */; };
+		682FA2B11E936EDB00EBC6CF /* HYHistoryWeekDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682FA2B01E936EDB00EBC6CF /* HYHistoryWeekDetailView.m */; };
 		68321D8B1E5EB86C002A6F3F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68321D8A1E5EB86C002A6F3F /* main.m */; };
 		68321D961E5EB86C002A6F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68321D951E5EB86C002A6F3F /* Assets.xcassets */; };
 		68321D991E5EB86C002A6F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68321D971E5EB86C002A6F3F /* LaunchScreen.storyboard */; };
@@ -58,6 +60,10 @@
 		682302CC1E68213200A178B8 /* HYViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYViewPagerController.m; sourceTree = "<group>"; };
 		682302CE1E68221C00A178B8 /* HYSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSegmentControl.h; sourceTree = "<group>"; };
 		682302CF1E68221C00A178B8 /* HYSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSegmentControl.m; sourceTree = "<group>"; };
+		682FA2AC1E936EB000EBC6CF /* HYHistoryWeekDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYHistoryWeekDetailController.h; sourceTree = "<group>"; };
+		682FA2AD1E936EB000EBC6CF /* HYHistoryWeekDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYHistoryWeekDetailController.m; sourceTree = "<group>"; };
+		682FA2AF1E936EDB00EBC6CF /* HYHistoryWeekDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYHistoryWeekDetailView.h; path = Views/HYHistoryWeekDetailView.h; sourceTree = "<group>"; };
+		682FA2B01E936EDB00EBC6CF /* HYHistoryWeekDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYHistoryWeekDetailView.m; path = Views/HYHistoryWeekDetailView.m; sourceTree = "<group>"; };
 		68321D861E5EB86C002A6F3F /* EasyMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68321D8A1E5EB86C002A6F3F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		68321D951E5EB86C002A6F3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -166,6 +172,8 @@
 				68A136DD1E89381300717C34 /* HYMainTodayCircleView.m */,
 				680356201E8A8042007210FE /* HYMainTodayBottomView.h */,
 				680356211E8A8042007210FE /* HYMainTodayBottomView.m */,
+				682FA2AF1E936EDB00EBC6CF /* HYHistoryWeekDetailView.h */,
+				682FA2B01E936EDB00EBC6CF /* HYHistoryWeekDetailView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -181,6 +189,8 @@
 				68A136D11E892B2B00717C34 /* HYMainHistoryController.m */,
 				688819801E6EB0BD0015FDB3 /* HYTabBarController.h */,
 				688819811E6EB0BD0015FDB3 /* HYTabBarController.m */,
+				682FA2AC1E936EB000EBC6CF /* HYHistoryWeekDetailController.h */,
+				682FA2AD1E936EB000EBC6CF /* HYHistoryWeekDetailController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -488,12 +498,14 @@
 			files = (
 				68A136D21E892B2B00717C34 /* HYMainHistoryController.m in Sources */,
 				6888197F1E6EAD450015FDB3 /* HYMainAccountController.m in Sources */,
+				682FA2B11E936EDB00EBC6CF /* HYHistoryWeekDetailView.m in Sources */,
 				68E2137E1E7A613E004F844F /* HYCrumbPath.m in Sources */,
 				682302D01E68221C00A178B8 /* HYSegmentControl.m in Sources */,
 				6820017A1E63FD62008C6A22 /* UIViewController+AOP.m in Sources */,
 				688819761E6EA9890015FDB3 /* HYNavSearchBar.m in Sources */,
 				68F062EA1E83986300D31396 /* NSDate+YYAdd.m in Sources */,
 				68E213811E7A6D39004F844F /* HYCrumbPathRenderer.m in Sources */,
+				682FA2AE1E936EB000EBC6CF /* HYHistoryWeekDetailController.m in Sources */,
 				682302CD1E68213200A178B8 /* HYViewPagerController.m in Sources */,
 				68A136D81E892F6300717C34 /* HYMainHistoryView.m in Sources */,
 				68321D8B1E5EB86C002A6F3F /* main.m in Sources */,

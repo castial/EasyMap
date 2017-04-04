@@ -66,6 +66,8 @@
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self routerEventWithName:HY_HISTORY_CELL_SELECT userInfo:nil];
 }
 
 #pragma mark - setter and getter

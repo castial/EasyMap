@@ -8,6 +8,7 @@
 
 #import "HYMainHistoryController.h"
 #import "HYMainHistoryView.h"
+#import "HYHistoryWeekDetailController.h"
 
 @interface HYMainHistoryController ()
 
@@ -22,6 +23,14 @@
     
     self.title = @"一周";
     [self.view addSubview:self.historyView];
+}
+
+#pragma mark - Events
+- (void)routerEventWithName:(NSString *)eventName userInfo:(NSObject *)userInfo {
+    if ([HY_HISTORY_CELL_SELECT isEqualToString:eventName]) {
+        HYHistoryWeekDetailController *historyVC = [[HYHistoryWeekDetailController alloc] init];
+        [self.navigationController pushViewController:historyVC animated:YES];
+    }
 }
 
 #pragma mark - setter and getter
