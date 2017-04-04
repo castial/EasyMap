@@ -11,6 +11,7 @@
 @interface HYMainAccountView()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, copy) NSArray *dataArray;
 
 @end
 
@@ -37,11 +38,11 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView {
-    return 2;
+    return self.dataArray.count;
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return [[self.dataArray objectAtIndex:section] count];
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -54,7 +55,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"id"];
         cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
     }
-    cell.textLabel.text = @"测试数据";
+    cell.textLabel.text = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -80,6 +82,13 @@
         _tableView.dataSource = self;
     }
     return _tableView;
+}
+
+- (NSArray *)dataArray {
+    if (!_dataArray) {
+        _dataArray = @[@[@"健走目标", @"数据分析"], @[@"推荐给朋友", @"帮助与反馈", @"去好评"], @[@"帮助", @"隐私保护", @"关于"]];
+    }
+    return _dataArray;
 }
 
 @end

@@ -126,9 +126,7 @@
                                                                  SCREEN_WIDTH - 60,
                                                                  SCREEN_HEIGHT - 200)];
         _barChart.isShowNumbers = NO;
-//        _barChart.yChartLabelWidth = 0;
         _barChart.chartMarginBottom = 50;
-//        _barChart.barWidth = 10;
         _barChart.barBackgroundColor = [UIColor clearColor];
         _barChart.xLabels = @[@"周一", @"周二", @"周三", @"周四", @"周五", @"周六", @"周日"];
         _barChart.yValues = @[@3803, @5800, @7801, @6403, @8500, @3403, @5409];

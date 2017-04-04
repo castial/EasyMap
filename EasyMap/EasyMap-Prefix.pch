@@ -73,6 +73,7 @@
 #define STATUS_BAR_HEIGHT               20
 #define NAVIGATION_BAR_HEIGHT           44
 #define TAB_BAR_HEIGHT                  49
+
 // Color
 #define HY_Tint_Color [UIColor colorWithRed:58.0/255.0 green:155.0/255.0 blue:252.0/255.0 alpha:1.0f]   // 系统主流颜色
 
